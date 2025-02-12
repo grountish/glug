@@ -3,6 +3,11 @@ import typography from "@tailwindcss/typography";
 
 export default {
   content: ["./app/**/*.{ts,tsx}", "./sanity/**/*.{ts,tsx}"],
+  safelist: [
+    { pattern: /^text-/ }, // Keep all `text-` classes
+    { pattern: /^bg-/ }, // Keep all `bg-` classes
+    { pattern: /^border-/ }, // Keep all `border-` classes
+  ],
   theme: {
     container: {
       center: true,
@@ -96,6 +101,7 @@ export default {
       },
       fontFamily: {
         sans: ["var(--font-inter)"],
+        teachers: ["Teachers", "serif"],
       },
     },
   },

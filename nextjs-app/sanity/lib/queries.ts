@@ -1,26 +1,23 @@
 import { defineQuery } from "next-sanity";
 
-export const settingsQuery = defineQuery(`*[_type == "settings"][0]`);
+export const settingsQuery = defineQuery(`*[_type == "settings"][0]{
+    ...,
+      mainNavigation {
+      ...,
+      navLinks[]{
+        ...,
+        page->}
+    },
+  }`);
 
-const postFields = /* groq */ `
-  _id,
-  "status": select(_originalId in path("drafts.**") => "draft", "published"),
-  "title": coalesce(title, "Untitled"),
-  "slug": slug.current,
-  excerpt,
-  coverImage,
-  "date": coalesce(date, _updatedAt),
-  "author": author->{firstName, lastName, picture},
-`;
-
-const linkFields = /* groq */ `
+const linkFields = `
   link {
       ...,
       _type == "link" => {
         "page": page->slug.current,
         "post": post->slug.current
-        }
       }
+  }
 `;
 
 export const getPageQuery = defineQuery(`
@@ -31,44 +28,18 @@ export const getPageQuery = defineQuery(`
     slug,
     heading,
     subheading,
+    pageBackgroundColor,
     "pageBuilder": pageBuilder[]{
       ...,
       _type == "callToAction" => {
         ...,
         ${linkFields},
+      },
+      _type == "mainHero" => {
+        ...
       }
     },
   }
-`);
-
-export const allPostsQuery = defineQuery(`
-  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {
-    ${postFields}
-  }
-`);
-
-export const morePostsQuery = defineQuery(`
-  *[_type == "post" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {
-    ${postFields}
-  }
-`);
-
-export const postQuery = defineQuery(`
-  *[_type == "post" && slug.current == $slug] [0] {
-    content[]{
-    ...,
-    markDefs[]{
-      ...,
-      ${linkFields}
-    }
-  },
-    ${postFields}
-  }
-`);
-
-export const postPagesSlugs = defineQuery(`
-  *[_type == "post" && defined(slug.current)]
-  {"slug": slug.current}
 `);
 
 export const pagesSlugs = defineQuery(`

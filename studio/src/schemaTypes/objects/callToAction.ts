@@ -18,7 +18,7 @@ export const callToAction = defineType({
       if ((buttonText && link) || (!buttonText && !link)) {
         return true
       }
-      return 'Both Button text and Button link must be set, or both must be empty'
+      return 'Tanto el "Texto del Botón" como el "Enlace del Botón" deben estar configurados, o ambos deben estar vacíos.'
     }),
   fields: [
     defineField({
@@ -29,17 +29,17 @@ export const callToAction = defineType({
     }),
     defineField({
       name: 'text',
-      title: 'Text',
+      title: 'Texto',
       type: 'text',
     }),
     defineField({
       name: 'buttonText',
-      title: 'Button text',
+      title: 'Texto del botón',
       type: 'string',
     }),
     defineField({
       name: 'link',
-      title: 'Button link',
+      title: 'Enlace del botón',
       type: 'link',
     }),
   ],

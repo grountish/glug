@@ -6,6 +6,8 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { getPageQuery, pagesSlugs } from "@/sanity/lib/queries";
 import { Page as PageType } from "@/sanity.types";
 import { PageOnboarding } from "@/app/components/Onboarding";
+import { client } from "@/sanity/lib/client";
+import BlockRenderer from "../components/BlockRenderer";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -46,9 +48,11 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export default async function Page(props: Props) {
   const params = await props.params;
-  const [{ data: page }] = await Promise.all([
-    sanityFetch({ query: getPageQuery, params }),
-  ]);
+  // use params.slug to fetch the page data
+  const page = await client.fetch(
+    '*[_type == "page" && slug.current == $slug][0]',
+    { slug: params.slug }
+  );
 
   if (!page?._id) {
     return (
@@ -57,26 +61,25 @@ export default async function Page(props: Props) {
       </div>
     );
   }
-
   return (
-    <div className="my-12 lg:my-24">
+    <div
+      className={`font-teachers bg-[${page.pageBackgroundColor.hex}]`}
+    >
       <Head>
         <title>{page.heading}</title>
       </Head>
-      <div className="">
-        <div className="container">
-          <div className="pb-6 border-b border-gray-100">
-            <div className="max-w-3xl">
-              <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-7xl">
-                {page.heading}
-              </h2>
-              <p className="mt-4 text-base lg:text-lg leading-relaxed text-gray-600 uppercase font-light">
-                {page.subheading}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* {
+        // Render the page builder
+        page.pageBuilder.map((block: any, index: number) => (
+          <BlockRenderer
+            key={block._key}
+            index={index}
+            block={block}
+            pageId={page._id}
+            pageType={page._type}
+          />
+        ))  
+      } */}
       <PageBuilderPage page={page as PageType} />
     </div>
   );

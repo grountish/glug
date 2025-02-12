@@ -1,12 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import {LinkIcon} from '@sanity/icons'
 
-/**
- * Link schema object. This link object lets the user first select the type of link and then
- * then enter the URL, page reference, or post reference - depending on the type selected.
- * Learn more: https://www.sanity.io/docs/object-type
- */
-
 export const link = defineType({
   name: 'link',
   title: 'Link',
@@ -17,23 +11,28 @@ export const link = defineType({
       name: 'linkType',
       title: 'Link Type',
       type: 'string',
-      initialValue: 'url',
+      initialValue: 'href',
       options: {
         list: [
           {title: 'URL', value: 'href'},
           {title: 'Page', value: 'page'},
-          {title: 'Post', value: 'post'},
+          {title: 'Nav Link', value: 'navLink'},
         ],
         layout: 'radio',
       },
     }),
     defineField({
+      name: 'urlTitle',
+      title: 'URL Title',
+      type: 'string',
+      hidden: ({parent}) => parent?.linkType !== 'href', // Show only if "href" is selected
+    }),
+    defineField({
       name: 'href',
       title: 'URL',
       type: 'url',
-      hidden: ({parent}) => parent?.linkType !== 'href',
+      hidden: ({parent}) => parent?.linkType !== 'href', // Show only if "href" is selected
       validation: (Rule) =>
-        // Custom validation to ensure URL is provided if the link type is 'href'
         Rule.custom((value, context: any) => {
           if (context.parent?.linkType === 'href' && !value) {
             return 'URL is required when Link Type is URL'
@@ -46,9 +45,8 @@ export const link = defineType({
       title: 'Page',
       type: 'reference',
       to: [{type: 'page'}],
-      hidden: ({parent}) => parent?.linkType !== 'page',
+      hidden: ({parent}) => parent?.linkType !== 'page', // Show only if "page" is selected
       validation: (Rule) =>
-        // Custom validation to ensure page reference is provided if the link type is 'page'
         Rule.custom((value, context: any) => {
           if (context.parent?.linkType === 'page' && !value) {
             return 'Page reference is required when Link Type is Page'
@@ -57,16 +55,14 @@ export const link = defineType({
         }),
     }),
     defineField({
-      name: 'post',
-      title: 'Post',
-      type: 'reference',
-      to: [{type: 'post'}],
-      hidden: ({parent}) => parent?.linkType !== 'post',
+      name: 'navLink',
+      title: 'Nav Link',
+      type: 'string',
+      hidden: ({parent}) => parent?.linkType !== 'navLink', // Show only if "navLink" is selected
       validation: (Rule) =>
-        // Custom validation to ensure post reference is provided if the link type is 'post'
         Rule.custom((value, context: any) => {
-          if (context.parent?.linkType === 'post' && !value) {
-            return 'Post reference is required when Link Type is Post'
+          if (context.parent?.linkType === 'navLink' && !value) {
+            return 'Nav Link is required when Link Type is Nav Link'
           }
           return true
         }),
@@ -76,6 +72,27 @@ export const link = defineType({
       title: 'Open in new tab',
       type: 'boolean',
       initialValue: false,
+      hidden: ({parent}) => parent?.linkType === 'navLink', // Hide for "navLink" type
     }),
   ],
+
+  preview: {
+    select: {
+      linkType: 'linkType',
+      pageTitle: 'page.name',
+      urlTitle: 'urlTitle',
+      navLink: 'navLink',
+    },
+    prepare({linkType, pageTitle, urlTitle, navLink}) {
+      let title = 'Untitled Link'
+      if (linkType === 'page') title = pageTitle || 'Untitled Page'
+      if (linkType === 'href') title = urlTitle || 'Untitled URL'
+      if (linkType === 'navLink') title = navLink || 'Untitled Nav Link'
+
+      return {
+        title,
+        media: LinkIcon,
+      }
+    },
+  },
 })

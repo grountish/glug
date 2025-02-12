@@ -8,22 +8,20 @@ import {DocumentIcon} from '@sanity/icons'
 
 export const page = defineType({
   name: 'page',
-  title: 'Page',
+  title: 'Página',
   type: 'document',
   icon: DocumentIcon,
   fields: [
     defineField({
       name: 'name',
-      title: 'Name',
+      title: 'Nombre',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
-
     defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'Link',
       type: 'slug',
-      validation: (Rule) => Rule.required(),
       options: {
         source: 'name',
         maxLength: 96,
@@ -37,14 +35,26 @@ export const page = defineType({
     }),
     defineField({
       name: 'subheading',
-      title: 'Subheading',
+      title: 'Subtítulo',
       type: 'string',
     }),
     defineField({
+      name: 'pageBackgroundColor',
+      title: 'Color de fondo de página',
+      type: 'color',
+    }),
+    defineField({
       name: 'pageBuilder',
-      title: 'Page builder',
+      title: 'Constructor de página',
       type: 'array',
-      of: [{type: 'callToAction'}, {type: 'infoSection'}],
+      of: [
+        {type: 'callToAction'},
+        {type: 'mainHero'},
+        {type: 'infoWithCTA'},
+        {type: 'imageTextBlock'},
+        {type: 'infoCard'},
+        {type: 'featureCard'},
+      ],
       options: {
         insertMenu: {
           // Configure the "Add Item" menu to display a thumbnail preview of the content type. https://www.sanity.io/docs/array-type#efb1fe03459d

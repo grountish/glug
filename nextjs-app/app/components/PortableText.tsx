@@ -31,7 +31,7 @@ export default function CustomPortableText({
           {children}
           <a
             href={`#${value?._key}`}
-            className="absolute left-0 top-0 bottom-0 -ml-6 flex items-center opacity-0 group-hover:opacity-100 transition-opacity"
+            className="-ml-6 flex items-center opacity-0 group-hover:opacity-100 transition-opacity"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ export default function CustomPortableText({
             {children}
             <a
               href={`#${value?._key}`}
-              className="absolute left-0 top-0 bottom-0 -ml-6 flex items-center opacity-0 group-hover:opacity-100 transition-opacity"
+              className="flex items-center opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
