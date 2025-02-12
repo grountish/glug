@@ -14,7 +14,7 @@ export const infoWithCTA = defineType({
       options: {
         list: [
           {title: 'Dark', value: 'darkTheme'},
-          {title: 'Light', value: 'darkTheme'},
+          {title: 'Light', value: 'lightTheme'},
         ],
         layout: 'radio',
       },

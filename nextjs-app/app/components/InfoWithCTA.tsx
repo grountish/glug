@@ -9,9 +9,8 @@ type InfoWithCTAProps = {
 
 export default function InfoWithCTA({ block }: InfoWithCTAProps) {
   if (!block) return null;
-
   return (
-    <section className={`grid grid-cols-12 pt-${block?.paddingT} pb-${block?.paddingB}  text-[${block?.textColor?.hex}] p-20`} data-section="light">
+    <section className={`grid grid-cols-12 pt-${block?.paddingT} pb-${block?.paddingB} text-[${block?.textColor?.hex}] p-20`} data-section={block?.theme}>
       <div className="text-3xl col-span-6">
         <PortableText value={block.firstColumnText as PortableTextBlock[]} />
       </div>

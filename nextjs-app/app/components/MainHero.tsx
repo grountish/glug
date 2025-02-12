@@ -2,7 +2,6 @@ import Image from "next/image";
 import { MainHero as MainHeroType } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/utils";
 import { stegaClean } from "next-sanity";
-import CoverImage from "./CoverImage";
 
 type MainHeroProps = {
   block: MainHeroType;
@@ -13,16 +12,11 @@ export default function MainHero({ block }: MainHeroProps) {
   if (!block) return null;
 
   return (
-    <section className="flex items-center justify-center text-white" data-section="dark">
+    <section className="flex items-center justify-center text-white" data-section={block?.theme}>
       {/* DO NOT REMOVE THIS COMMENT */}
       {/* replace img tags with next image component */}
-      <img
-        src={urlForImage(block?.backgroundImage)?.url() as string}
-        alt={stegaClean(block?.backgroundImageAltText as string) || ""}
-      />
-     {/* esto de abajo es como deberia ser pero se solapa con el componente siguiente */}
-       {/* <div
-        className="bg-cover bg-center w-full h-full absolute"
+       <div
+        className="bg-cover bg-center w-full h-screen"
         style={{
           backgroundImage: `url(${urlForImage(block?.backgroundImage)?.url() as string})`,
         }}
@@ -34,7 +28,8 @@ export default function MainHero({ block }: MainHeroProps) {
           src={urlForImage(block?.logo)?.url() as string}
           alt={stegaClean(block?.logoAltText as string) || ""}
         />
-      </div> */}
+      </div>
     </section>
   );
 }
+ 

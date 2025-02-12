@@ -14,7 +14,7 @@ export default function FeatureCard({ block }: FeatureCardProps) {
   return (
     <section
       className={`flex flex-col h-full bg-[${block?.backgroundColor?.hex?.toUpperCase()}] px-20 pt-${block?.paddingT} pb-${block?.paddingB} text-[${block?.textColor.hex.toUpperCase()}]`}
-      data-section="dark"
+      data-section={block?.theme}
     >
       <h6 className="self-end">{block?.variant}</h6>
       <div className="flex items-center justify-center">

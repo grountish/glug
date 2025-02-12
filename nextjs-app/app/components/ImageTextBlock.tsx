@@ -16,7 +16,7 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
   return (
     <section
       className={`flex items-center justify-center text-[${block?.textColor?.hex}] text-3xl pt-${block?.paddingT} pb-${block?.paddingB} font-semibold`}
-      data-section="light"
+      data-section={block?.theme}
     >
       {layout === "leftImage" && (
         <div className="flex flex-col md:flex-row items-end gap-6 px-20">

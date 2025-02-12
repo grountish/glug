@@ -3,7 +3,9 @@ import { defineQuery } from "next-sanity";
 export const settingsQuery = defineQuery(`*[_type == "settings"][0]{
     ...,
       mainNavigation {
-      ...,
+        ...,
+      "darkLogo": darkLogo.asset->,
+      "lightLogo": lightLogo.asset->,
       navLinks[]{
         ...,
         page->}

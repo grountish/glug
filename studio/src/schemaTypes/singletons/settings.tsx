@@ -22,9 +22,19 @@ export const settings = defineType({
     defineField({
       name: 'mainNavigation',
       title: 'Navegación principal',
-      type: 'image',
+      type: 'object',
       description: 'Añade el logo de la empresa en formato SVG y la información de la barra de navegación.',
       fields: [
+        defineField({
+          name: 'lightLogo',
+          title: 'Logo Claro',
+          type: 'image',
+        }),
+        defineField({
+          name: 'darkLogo',
+          title: 'Logo Oscuro',
+          type: 'image',
+        }),
         defineField({
           name: 'secondColumnNav',
           title: 'Segunda Columna Navegación',
