@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Settings as SettingsType } from "@/sanity.types";
 import Link from "next/link";
 import Image from "next/image";

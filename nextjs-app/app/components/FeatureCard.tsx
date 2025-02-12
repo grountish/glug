@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { FeatureCard as FeatureCardType } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/utils";
 import { PortableText, PortableTextBlock } from "next-sanity";

@@ -32,7 +32,9 @@ export default function Header({ block }: HeaderProps) {
           return link.linkType === "navLink" ? (
             <h3 key={i}>{link.navLink}</h3>
           ) : (
+            // @ts-ignore
             <Link href={`/${link?.page?.slug?.current}`} key={i}>
+              {/* @ts-ignore */}
               {link?.page?.name}
             </Link>
           );

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { InfoCard as InfoCardType } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/utils";
 import { PortableText, PortableTextBlock, stegaClean } from "next-sanity";
@@ -9,7 +10,7 @@ type InfoCardProps = {
 export default function InfoCard({ block }: InfoCardProps) {
   if (!block) return null;
   return (
-    <section className={`flex flex-col px-20 text-[${block?.textColor?.hex.toUpperCase()}] pt-${block?.paddingT} pb-${block?.paddingB}`} data-section={block?.theme}>
+    <section className={`flex flex-col px-20 text-[${block?.textColor?.hex?.toUpperCase()}] pt-${block?.paddingT} pb-${block?.paddingB}`} data-section={block?.theme}>
       <h1 className="text-[200px] text-left pl-40 max-w-10 leading-[1] pb-20">{block?.title}</h1>
       <img
       className="rounded-xl"
