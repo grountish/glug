@@ -1,36 +1,78 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { settingsQuery } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
+
+type UrlObject = {
+  url: string | undefined;
+};
 
 export default function DynamicHeader() {
   const [textColor, setTextColor] = useState("#ECE8E2");
   const [currentLogo, setCurrentLogo] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
   const [darkLogoUrl, setDarkLogoUrl] = useState("");
+  const pathname = usePathname();
 
   const getData = async () => {
     const data = await client.fetch(settingsQuery);
-    setLogoUrl(data?.mainNavigation?.lightLogo.url);
-    setDarkLogoUrl(data?.mainNavigation?.darkLogo.url);
-    setCurrentLogo(data?.mainNavigation?.lightLogo.url);
+    setLogoUrl(
+      (data?.mainNavigation?.lightLogo as UrlObject | undefined)?.url || ""
+    );
+    setDarkLogoUrl(
+      (data?.mainNavigation?.darkLogo as UrlObject | undefined)?.url || ""
+    );
+    setCurrentLogo(
+      (data?.mainNavigation?.lightLogo as UrlObject | undefined)?.url || ""
+    );
   };
 
   useEffect(() => {
     getData();
   }, []);
-  useEffect(() => {
-    const sections = document.querySelectorAll("section");
 
-    const observer = new IntersectionObserver(
+  useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+
+    const updateNavbarTheme = () => {
+      const sections = document.querySelectorAll("section");
+      let found = false;
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+          const sectionType = section.getAttribute("data-section");
+          console.log(`Detected section on mount: ${sectionType}`);
+          if (sectionType === "lightTheme") {
+            setTextColor("#712538");
+            setCurrentLogo(darkLogoUrl);
+          } else {
+            setTextColor("#ECE8E2");
+            setCurrentLogo(logoUrl);
+          }
+          found = true;
+        }
+      });
+
+      if (!found) {
+        // Default case if no section is detected
+        setTextColor("#ECE8E2");
+        setCurrentLogo(logoUrl);
+      }
+    };
+
+    updateNavbarTheme();
+
+    observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             const sectionType = entry.target.getAttribute("data-section");
-            console.log(sectionType);
+            console.log(`Detected section while scrolling: ${sectionType}`);
             if (sectionType === "lightTheme") {
               setTextColor("#712538");
               setCurrentLogo(darkLogoUrl);
@@ -44,10 +86,14 @@ export default function DynamicHeader() {
       { rootMargin: "-50px 0px 0px 0px", threshold: 0.6 }
     );
 
-    sections.forEach((section) => observer.observe(section));
+    document
+      .querySelectorAll("section")
+      .forEach((section) => observer!.observe(section));
 
-    return () => observer.disconnect();
-  }, [darkLogoUrl, logoUrl]);
+    return () => {
+      if (observer) observer.disconnect();
+    };
+  }, [pathname, darkLogoUrl, logoUrl]);
 
   return (
     <>

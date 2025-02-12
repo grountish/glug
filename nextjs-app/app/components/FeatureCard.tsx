@@ -13,7 +13,7 @@ export default function FeatureCard({ block }: FeatureCardProps) {
 
   return (
     <section
-      className={`flex flex-col h-full bg-[${block?.backgroundColor?.hex?.toUpperCase()}] px-20 pt-${block?.paddingT} pb-${block?.paddingB} text-[${block?.textColor.hex.toUpperCase()}]`}
+      className={`flex flex-col h-full bg-[${block?.backgroundColor?.hex?.toUpperCase()}] px-20 pt-${block?.paddingT} pb-${block?.paddingB} text-[${block?.textColor?.hex?.toUpperCase()}]`}
       data-section={block?.theme}
     >
       <h6 className="self-end">{block?.variant}</h6>
@@ -31,7 +31,7 @@ export default function FeatureCard({ block }: FeatureCardProps) {
           <Button
             buttonText={block?.cta?.text as string}
             variant={block?.cta?.variant}
-            buttonUrl={block?.cta?.buttonUrl}
+            buttonUrl={block?.cta?.text}
           />
         </div>
       </div>

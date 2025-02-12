@@ -70,12 +70,87 @@ export type Geopoint = {
 
 export type FeatureCard = {
   _type: 'featureCard'
-  variant?: string
-  title?: string
-  description?: string
+  theme?: 'darkTheme' | 'lightTheme'
+  paddingT?:
+    | 0
+    | 0.5
+    | 1
+    | 1.5
+    | 2
+    | 2.5
+    | 3
+    | 3.5
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 14
+    | 16
+    | 20
+    | 24
+    | 28
+    | 32
+    | 36
+    | 40
+    | 44
+    | 48
+    | 52
+    | 56
+    | 60
+    | 64
+    | 72
+    | 80
+    | 96
+  paddingB?:
+    | 0
+    | 0.5
+    | 1
+    | 1.5
+    | 2
+    | 2.5
+    | 3
+    | 3.5
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 14
+    | 16
+    | 20
+    | 24
+    | 28
+    | 32
+    | 36
+    | 40
+    | 44
+    | 48
+    | 52
+    | 56
+    | 60
+    | 64
+    | 72
+    | 80
+    | 96
+  textColor: Color
+  variant: string
+  title: string
+  description: string
   price?: number
-  buttonText?: string
-  buttonLink?: string
+  cta?: {
+    text: string
+    link: Link
+    variant?: 'buttonDark' | 'buttonLight'
+  }
   illustration?: {
     asset?: {
       _ref: string
@@ -92,6 +167,77 @@ export type FeatureCard = {
 
 export type InfoCard = {
   _type: 'infoCard'
+  paddingT?:
+    | 0
+    | 0.5
+    | 1
+    | 1.5
+    | 2
+    | 2.5
+    | 3
+    | 3.5
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 14
+    | 16
+    | 20
+    | 24
+    | 28
+    | 32
+    | 36
+    | 40
+    | 44
+    | 48
+    | 52
+    | 56
+    | 60
+    | 64
+    | 72
+    | 80
+    | 96
+  paddingB?:
+    | 0
+    | 0.5
+    | 1
+    | 1.5
+    | 2
+    | 2.5
+    | 3
+    | 3.5
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 14
+    | 16
+    | 20
+    | 24
+    | 28
+    | 32
+    | 36
+    | 40
+    | 44
+    | 48
+    | 52
+    | 56
+    | 60
+    | 64
+    | 72
+    | 80
+    | 96
+  theme?: 'darkTheme' | 'lightTheme'
   title?: string
   text?: Array<{
     children?: Array<{
@@ -103,7 +249,7 @@ export type InfoCard = {
     style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
     listItem?: 'bullet' | 'number'
     markDefs?: Array<{
-      linkType?: 'href' | 'page'
+      linkType?: 'href' | 'page' | 'navLink'
       href?: string
       page?: {
         _ref: string
@@ -119,6 +265,7 @@ export type InfoCard = {
     _type: 'block'
     _key: string
   }>
+  textColor?: Color
   image?: {
     asset?: {
       _ref: string
@@ -130,11 +277,83 @@ export type InfoCard = {
     crop?: SanityImageCrop
     _type: 'image'
   }
+  imageAltText?: string
 }
 
 export type InfoWithCTA = {
   _type: 'infoWithCTA'
-  firstColumnText?: Array<{
+  theme?: 'darkTheme' | 'lightTheme'
+  paddingT?:
+    | 0
+    | 0.5
+    | 1
+    | 1.5
+    | 2
+    | 2.5
+    | 3
+    | 3.5
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 14
+    | 16
+    | 20
+    | 24
+    | 28
+    | 32
+    | 36
+    | 40
+    | 44
+    | 48
+    | 52
+    | 56
+    | 60
+    | 64
+    | 72
+    | 80
+    | 96
+  paddingB?:
+    | 0
+    | 0.5
+    | 1
+    | 1.5
+    | 2
+    | 2.5
+    | 3
+    | 3.5
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 14
+    | 16
+    | 20
+    | 24
+    | 28
+    | 32
+    | 36
+    | 40
+    | 44
+    | 48
+    | 52
+    | 56
+    | 60
+    | 64
+    | 72
+    | 80
+    | 96
+  firstColumnText: Array<{
     children?: Array<{
       marks?: Array<string>
       text?: string
@@ -144,7 +363,7 @@ export type InfoWithCTA = {
     style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
     listItem?: 'bullet' | 'number'
     markDefs?: Array<{
-      linkType?: 'href' | 'page'
+      linkType?: 'href' | 'page' | 'navLink'
       href?: string
       page?: {
         _ref: string
@@ -160,7 +379,7 @@ export type InfoWithCTA = {
     _type: 'block'
     _key: string
   }>
-  secondColumnText?: Array<{
+  secondColumnText: Array<{
     children?: Array<{
       marks?: Array<string>
       text?: string
@@ -170,7 +389,7 @@ export type InfoWithCTA = {
     style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
     listItem?: 'bullet' | 'number'
     markDefs?: Array<{
-      linkType?: 'href' | 'page'
+      linkType?: 'href' | 'page' | 'navLink'
       href?: string
       page?: {
         _ref: string
@@ -186,15 +405,17 @@ export type InfoWithCTA = {
     _type: 'block'
     _key: string
   }>
+  textColor?: Color
   cta?: {
-    text?: string
-    link?: Link
+    text: string
+    link: Link
+    variant?: 'buttonDark' | 'buttonLight'
   }
 }
 
 export type CallToAction = {
   _type: 'callToAction'
-  heading?: string
+  heading: string
   text?: string
   buttonText?: string
   link?: Link
@@ -202,6 +423,7 @@ export type CallToAction = {
 
 export type MainHero = {
   _type: 'mainHero'
+  theme?: 'darkTheme' | 'lightTheme'
   backgroundImage?: {
     asset?: {
       _ref: string
@@ -213,6 +435,7 @@ export type MainHero = {
     crop?: SanityImageCrop
     _type: 'image'
   }
+  backgroundImageAltText?: string
   logo?: {
     asset?: {
       _ref: string
@@ -224,10 +447,82 @@ export type MainHero = {
     crop?: SanityImageCrop
     _type: 'image'
   }
+  logoAltText?: string
 }
 
 export type ImageTextBlock = {
   _type: 'imageTextBlock'
+  theme?: 'darkTheme' | 'lightTheme'
+  paddingT?:
+    | 0
+    | 0.5
+    | 1
+    | 1.5
+    | 2
+    | 2.5
+    | 3
+    | 3.5
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 14
+    | 16
+    | 20
+    | 24
+    | 28
+    | 32
+    | 36
+    | 40
+    | 44
+    | 48
+    | 52
+    | 56
+    | 60
+    | 64
+    | 72
+    | 80
+    | 96
+  paddingB?:
+    | 0
+    | 0.5
+    | 1
+    | 1.5
+    | 2
+    | 2.5
+    | 3
+    | 3.5
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 14
+    | 16
+    | 20
+    | 24
+    | 28
+    | 32
+    | 36
+    | 40
+    | 44
+    | 48
+    | 52
+    | 56
+    | 60
+    | 64
+    | 72
+    | 80
+    | 96
   text?: Array<{
     children?: Array<{
       marks?: Array<string>
@@ -238,7 +533,7 @@ export type ImageTextBlock = {
     style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
     listItem?: 'bullet' | 'number'
     markDefs?: Array<{
-      linkType?: 'href' | 'page'
+      linkType?: 'href' | 'page' | 'navLink'
       href?: string
       page?: {
         _ref: string
@@ -254,7 +549,8 @@ export type ImageTextBlock = {
     _type: 'block'
     _key: string
   }>
-  images?: Array<{
+  textColor?: Color
+  images: Array<{
     asset?: {
       _ref: string
       _type: 'reference'
@@ -290,7 +586,7 @@ export type BlockContent = Array<{
   style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
   listItem?: 'bullet' | 'number'
   markDefs?: Array<{
-    linkType?: 'href' | 'page'
+    linkType?: 'href' | 'page' | 'navLink'
     href?: string
     page?: {
       _ref: string
@@ -313,24 +609,37 @@ export type Settings = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title?: string
+  title: string
   mainNavigation?: {
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    lightLogo?: {
+      asset?: {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+      }
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
     }
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    secondColumnNav?: BlockContent
-    thirdColumnNav?: BlockContent
-    navLinks?: Array<
+    darkLogo?: {
+      asset?: {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+      }
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
+    }
+    secondColumnNav: BlockContent
+    thirdColumnNav: BlockContent
+    navLinks: Array<
       {
         _key: string
       } & Link
     >
-    _type: 'image'
   }
   footer?: {
     asset?: {
@@ -341,10 +650,10 @@ export type Settings = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    secondColumnFooter?: BlockContent
-    thirdColumnFooter?: BlockContent
-    fourthColumnFooter?: BlockContent
-    fifthColumnFooter?: BlockContent
+    secondColumnFooter: BlockContent
+    thirdColumnFooter: BlockContent
+    fourthColumnFooter: BlockContent
+    fifthColumnFooter: BlockContent
     _type: 'image'
   }
   description?: Array<{
@@ -357,7 +666,7 @@ export type Settings = {
     style?: 'normal'
     listItem?: never
     markDefs?: Array<{
-      href?: string
+      href: string
       _type: 'link'
       _key: string
     }>
@@ -386,10 +695,11 @@ export type Page = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  name?: string
+  name: string
   slug?: Slug
-  heading?: string
+  heading: string
   subheading?: string
+  pageBackgroundColor?: Color
   pageBuilder?: Array<
     | ({
         _key: string
@@ -429,7 +739,7 @@ export type Link = {
 
 export type Slug = {
   _type: 'slug'
-  current?: string
+  current: string
   source?: string
 }
 
@@ -563,7 +873,7 @@ export type SanityAssistOutputField = {
 
 export type SanityAssistInstructionContext = {
   _type: 'sanity.assist.instruction.context'
-  reference?: {
+  reference: {
     _ref: string
     _type: 'reference'
     _weak?: boolean
@@ -596,7 +906,7 @@ export type AssistInstructionContext = {
 
 export type SanityAssistInstructionUserInput = {
   _type: 'sanity.assist.instruction.userInput'
-  message?: string
+  message: string
   description?: string
 }
 
