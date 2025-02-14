@@ -10,10 +10,9 @@ import DraftModeToast from "@/app/components/DraftModeToast";
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
-import { getPageQuery, settingsQuery } from "@/sanity/lib/queries";
+import { settingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/utils";
 import { handleError } from "./client-utils";
-import { getPackedSettings } from "http2";
 
 /**
  * Generate metadata for the page.
@@ -25,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Metadata should never contain stega
     stega: false,
   });
-  const title = settings?.title;
+  const title = settings?.title || "Glug";
   const description = settings?.description;
 
   const ogImage = resolveOpenGraphImage(settings?.ogImage);
@@ -43,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s | ${title}`,
       default: title,
     },
-    description: toPlainText(description),
+    description: toPlainText(description || []),
     openGraph: {
       images: ogImage ? [ogImage] : [],
     },
@@ -67,19 +66,17 @@ export default async function RootLayout({
     query: settingsQuery,
   });
 
+  // return null;
+
   return (
     <html lang="en" className={`${teachers} text-black`}>
       <body>
         <section>
-          {isDraftMode && (
-            <>
-              <DraftModeToast />
-              <VisualEditing />
-            </>
-          )}
-          <SanityLive onError={handleError} />
-          <Header block={settings} />
+          {/* <SanityLive onError={handleError} /> */}
+          {/* @ts-ignore */}
+          {settings && <Header block={settings} />}
           <main>{children}</main>
+          {/* @ts-ignore */}
           <Footer block={settings} />
         </section>
         <SpeedInsights />

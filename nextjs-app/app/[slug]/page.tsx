@@ -5,9 +5,7 @@ import PageBuilderPage from "@/app/components/PageBuilder";
 import { sanityFetch } from "@/sanity/lib/live";
 import { getPageQuery, pagesSlugs } from "@/sanity/lib/queries";
 import { Page as PageType } from "@/sanity.types";
-import { PageOnboarding } from "@/app/components/Onboarding";
 import { client } from "@/sanity/lib/client";
-import BlockRenderer from "../components/BlockRenderer";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -48,19 +46,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export default async function Page(props: Props) {
   const params = await props.params;
+  if (params.slug === "404") return null;
+  if (params.slug === "500") return null;
+
   // use params.slug to fetch the page data
   const page = await client.fetch(
     '*[_type == "page" && slug.current == $slug][0]',
     { slug: params.slug }
   );
 
-  if (!page?._id) {
-    return (
-      <div className="py-40">
-        <PageOnboarding />
-      </div>
-    );
-  }
+  if (!page?._id) return null;
   return (
     <div
       className={`font-teachers bg-[${page.pageBackgroundColor.hex}]`}
@@ -68,18 +63,6 @@ export default async function Page(props: Props) {
       <Head>
         <title>{page.heading}</title>
       </Head>
-      {/* {
-        // Render the page builder
-        page.pageBuilder.map((block: any, index: number) => (
-          <BlockRenderer
-            key={block._key}
-            index={index}
-            block={block}
-            pageId={page._id}
-            pageType={page._type}
-          />
-        ))  
-      } */}
       <PageBuilderPage page={page as PageType} />
     </div>
   );

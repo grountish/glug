@@ -11,7 +11,6 @@ type FeatureCardProps = {
 
 export default function FeatureCard({ block }: FeatureCardProps) {
   if (!block) return null;
-
   return (
     <section
       className={`flex flex-col h-full bg-[${block?.backgroundColor?.hex?.toUpperCase()}] px-20 pt-${block?.paddingT} pb-${block?.paddingB} text-[${block?.textColor?.hex?.toUpperCase()}]`}
