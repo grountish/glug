@@ -15,8 +15,8 @@ export default function MainHero({ block }: MainHeroProps) {
     <section className="flex items-center justify-center text-white" data-section={block?.theme}>
       {/* DO NOT REMOVE THIS COMMENT */}
       {/* replace img tags with next image component */}
-       <div
-        className="bg-cover bg-center w-full h-screen"
+      <div
+        className="relative bg-cover bg-center w-full h-screen flex items-center justify-center"
         style={{
           backgroundImage: `url(${urlForImage(block?.backgroundImage)?.url() as string})`,
         }}
@@ -24,7 +24,7 @@ export default function MainHero({ block }: MainHeroProps) {
         aria-label={stegaClean(block?.backgroundImageAltText as string) || ""}
       >
         <img
-          className="relative top-32 left-28 w-[1300px]"
+          className="absolute max-w-full md:w-[1300px] w-72"
           src={urlForImage(block?.logo)?.url() as string}
           alt={stegaClean(block?.logoAltText as string) || ""}
         />
@@ -32,4 +32,3 @@ export default function MainHero({ block }: MainHeroProps) {
     </section>
   );
 }
- 

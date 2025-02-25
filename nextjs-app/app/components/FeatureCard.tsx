@@ -13,20 +13,20 @@ export default function FeatureCard({ block }: FeatureCardProps) {
   if (!block) return null;
   return (
     <section
-      className={`flex flex-col h-full bg-[${block?.backgroundColor?.hex?.toUpperCase()}] px-20 pt-${block?.paddingT} pb-${block?.paddingB} text-[${block?.textColor?.hex?.toUpperCase()}]`}
+      className={`flex flex-col h-full bg-[${block?.backgroundColor?.hex?.toUpperCase()}] lg:px-20 px-5 pt-${block?.paddingT} pb-${block?.paddingB} text-[${block?.textColor?.hex?.toUpperCase()}]`}
       data-section={block?.theme}
     >
       <h6 className="self-end">{block?.variant}</h6>
-      <div className="flex items-center justify-center">
-        <div className="w-1/2">
+      <div className="flex lg:flex-row flex-col items-center justify-center">
+        <div className="lg:w-1/2 w-64 mr-auto lg:mx-auto">
           <img
             src={urlForImage(block?.illustration)?.url() as string}
             alt="alttext"
-            className="rounded-xl w-full h-auto"
+            className="rounded-xl w-auto h-64 lg:h-[600px]"
           />
         </div>
-        <div className="w-1/2">
-          <h1 className="text-[160px] leading-[1] pb-16">{block?.title}</h1>
+        <div className="lg:w-1/2">
+          <h1 className="lg:text-[160px] text-8xl leading-[1] pb-16">{block?.title}</h1>
           <p className="pb-16">{block?.description}</p>
           <Button
             buttonText={block?.cta?.text as string}

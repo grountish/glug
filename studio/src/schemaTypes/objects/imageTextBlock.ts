@@ -1,28 +1,53 @@
-import {defineField, defineType} from 'sanity'
-import {ImageIcon} from '@sanity/icons'
+import { defineField, defineType } from "sanity";
+import { ImageIcon } from "@sanity/icons";
 
 export const imageTextBlock = defineType({
-  name: 'imageTextBlock',
-  title: 'Image & Text Block',
-  type: 'object',
+  name: "imageTextBlock",
+  title: "Image & Text Block",
+  type: "object",
   icon: ImageIcon,
   fields: [
     defineField({
-      name: 'theme',
-      title: 'Tema',
-      type: 'string',
+      name: "theme",
+      title: "Tema",
+      type: "string",
       options: {
         list: [
-          {title: 'Dark', value: 'darkTheme'},
-          {title: 'Light', value: 'lightTheme'},
+          { title: "Dark", value: "darkTheme" },
+          { title: "Light", value: "lightTheme" },
         ],
-        layout: 'radio',
+        layout: "radio",
       },
-      initialValue: 'darkTheme',
+      initialValue: "darkTheme",
     }),
     defineField({
-      name: 'paddingT',
-      title: 'Padding arriba',
+      name: "paddingT",
+      title: "Padding arriba",
+      type: "number",
+      options: {
+        list: [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96].map((value) => ({
+          title: `${value}`,
+          value,
+        })),
+      },
+      initialValue: 0,
+    }),
+    defineField({
+      name: "paddingB",
+      title: "Padding abajo",
+      type: "number",
+      options: {
+        list: [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96].map((value) => ({
+          title: `${value}`,
+          value,
+        })),
+      },
+      initialValue: 0,
+    }),
+
+    defineField({
+      name: 'mobilePaddingT',
+      title: 'Padding arriba en móvil',
       type: 'number',
       options: {
         list: [
@@ -33,8 +58,8 @@ export const imageTextBlock = defineType({
       initialValue: 0,
     }),
     defineField({
-      name: 'paddingB',
-      title: 'Padding abajo',
+      name: 'mobilePaddingB',
+      title: 'Padding abajo en móvil',
       type: 'number',
       options: {
         list: [
@@ -45,60 +70,83 @@ export const imageTextBlock = defineType({
       initialValue: 0,
     }),
     defineField({
-      name: 'text',
-      title: 'Texto',
-      description: 'Opcional',
-      type: 'blockContent',
+      name: "text",
+      title: "Texto",
+      description: "Opcional",
+      type: "blockContent",
     }),
     defineField({
-      name: 'textColor',
-      title: 'Color del Texto',
-      type: 'color',
+      name: "textColor",
+      title: "Color del Texto",
+      type: "color",
     }),
     defineField({
-      name: 'images',
-      title: 'Imágenes',
-      type: 'array',
-      of: [{type: 'image'}],
+      name: "images",
+      title: "Imágenes",
+      type: "array",
+      of: [{ type: "image" }],
       validation: (Rule) => Rule.required().min(1).max(2),
     }),
     defineField({
-      name: 'illustration',
-      title: 'Ilustración',
-      type: 'image',
-      description: 'Imagen decorativa (opcional)',
+      name: "illustration",
+      title: "Ilustración",
+      type: "image",
+      description: "Imagen decorativa (opcional)",
     }),
     defineField({
-      name: 'layout',
-      title: 'Estilo de Diseño',
-      type: 'string',
+      name: "layout",
+      title: "Estilo de Diseño",
+      type: "string",
       options: {
         list: [
-          {title: 'Imagen izquierda, ilustración izquierda', value: 'leftImage'},
-          {title: 'Imágenes derecha, texto derecha', value: 'topText'},
-          {
-            title: 'Imágen izquierda, texto izquierda, ilustración izquierda',
-            value: 'leftTextImageIlustration',
-          },
-          {title: 'Imágenes derecha, sin texto', value: 'rightImageNoText'},
+          { title: "Imagen izquierda, ilustración izquierda", value: "leftImage" },
+          { title: "Imágenes derecha, texto derecha", value: "topText" },
+          { title: "Imágen izquierda, texto izquierda, ilustración izquierda", value: "leftTextImageIlustration" },
+          { title: "Imágenes derecha, texto hover", value: "rightImageHoverText" },
         ],
-        layout: 'radio',
+        layout: "radio",
       },
-      initialValue: 'leftImage',
+      initialValue: "leftImage",
+    }),
+
+    // ** New Fields: textImage1 and textImage2 (Optional when "rightImageHoverText" is selected) **
+    defineField({
+      name: "titleImage1",
+      title: "Título Imagen 1",
+      type: "string",
+      hidden: ({ parent }) => parent?.layout !== "rightImageHoverText",
+    }),
+    defineField({
+      name: "textImage1",
+      title: "Texto Imagen 1",
+      type: "blockContent",
+      hidden: ({ parent }) => parent?.layout !== "rightImageHoverText",
+    }),
+    defineField({
+      name: "titleImage2",
+      title: "Título Imagen 2",
+      type: "string",
+      hidden: ({ parent }) => parent?.layout !== "rightImageHoverText",
+    }),
+    defineField({
+      name: "textImage2",
+      title: "Texto Imagen 2",
+      type: "blockContent",
+      hidden: ({ parent }) => parent?.layout !== "rightImageHoverText",
     }),
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'description',
-      media: 'images.0',
+      title: "title",
+      subtitle: "description",
+      media: "images.0",
     },
-    prepare({title, subtitle, media}) {
+    prepare({ title, subtitle, media }) {
       return {
-        title: title || 'Bloque de imagen y texto',
-        subtitle: subtitle || 'No hay texto',
+        title: title || "Bloque de imagen y texto",
+        subtitle: subtitle || "No hay texto",
         media: media || ImageIcon,
-      }
+      };
     },
   },
-})
+});

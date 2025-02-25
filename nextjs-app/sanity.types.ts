@@ -73,6 +73,8 @@ export type FeatureCard = {
   theme?: "darkTheme" | "lightTheme";
   paddingT?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
   paddingB?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
+  mobilePaddingT?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
+  mobilePaddingB?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
   textColor: Color;
   variant: string;
   title: string;
@@ -101,6 +103,8 @@ export type InfoCard = {
   _type: "infoCard";
   paddingT?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
   paddingB?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
+  mobilePaddingT?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
+  mobilePaddingB?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
   theme?: "darkTheme" | "lightTheme";
   title?: string;
   text?: Array<{
@@ -149,6 +153,8 @@ export type InfoWithCTA = {
   theme?: "darkTheme" | "lightTheme";
   paddingT?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
   paddingB?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
+  mobilePaddingT?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
+  mobilePaddingB?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
   firstColumnText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -249,8 +255,8 @@ export type MainHero = {
 export type ImageTextBlock = {
   _type: "imageTextBlock";
   theme?: "darkTheme" | "lightTheme";
-  paddingT?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
-  paddingB?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
+  paddingT?: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 80 | 96;
+  paddingB?: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 80 | 96;
   text?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -301,7 +307,61 @@ export type ImageTextBlock = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  layout?: "leftImage" | "topText" | "leftTextImageIlustration" | "rightImageNoText";
+  layout?: "leftImage" | "topText" | "leftTextImageIlustration" | "rightImageHoverText";
+  titleImage1?: string;
+  textImage1?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      linkType?: "href" | "page" | "navLink";
+      href?: string;
+      page?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      openInNewTab?: boolean;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  titleImage2?: string;
+  textImage2?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      linkType?: "href" | "page" | "navLink";
+      href?: string;
+      page?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      openInNewTab?: boolean;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
 };
 
 export type BlockContent = Array<{
@@ -443,7 +503,7 @@ export type Page = {
 
 export type Link = {
   _type: "link";
-  linkType?: "href" | "page" | "navLink";
+  linkType?: "href" | "page";
   urlTitle?: string;
   href?: string;
   page?: {
@@ -452,8 +512,7 @@ export type Link = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "page";
   };
-  navLink?: string;
-  openInNewTab?: boolean;
+  openType?: "newTab" | "modal";
 };
 
 export type Slug = {
@@ -735,7 +794,7 @@ export type SettingsQueryResult = {
     navLinks: Array<{
       _key: string;
       _type: "link";
-      linkType?: "href" | "navLink" | "page";
+      linkType?: "href" | "page";
       urlTitle?: string;
       href?: string;
       page: {
@@ -763,8 +822,7 @@ export type SettingsQueryResult = {
           _key: string;
         } & MainHero>;
       } | null;
-      navLink?: string;
-      openInNewTab?: boolean;
+      openType?: "modal" | "newTab";
     }>;
   } | null;
   footer?: {
@@ -832,12 +890,11 @@ export type GetPageQueryResult = {
     buttonText?: string;
     link: {
       _type: "link";
-      linkType?: "href" | "navLink" | "page";
+      linkType?: "href" | "page";
       urlTitle?: string;
       href?: string;
       page: string | null;
-      navLink?: string;
-      openInNewTab?: boolean;
+      openType?: "modal" | "newTab";
       post: null;
     } | null;
   } | {
@@ -846,6 +903,8 @@ export type GetPageQueryResult = {
     theme?: "darkTheme" | "lightTheme";
     paddingT?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
     paddingB?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
+    mobilePaddingT?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
+    mobilePaddingB?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
     textColor: Color;
     variant: string;
     title: string;
@@ -872,8 +931,8 @@ export type GetPageQueryResult = {
     _key: string;
     _type: "imageTextBlock";
     theme?: "darkTheme" | "lightTheme";
-    paddingT?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
-    paddingB?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
+    paddingT?: 0 | 12 | 16 | 20 | 24 | 32 | 4 | 40 | 48 | 56 | 64 | 8 | 80 | 96;
+    paddingB?: 0 | 12 | 16 | 20 | 24 | 32 | 4 | 40 | 48 | 56 | 64 | 8 | 80 | 96;
     text?: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -924,12 +983,68 @@ export type GetPageQueryResult = {
       crop?: SanityImageCrop;
       _type: "image";
     };
-    layout?: "leftImage" | "leftTextImageIlustration" | "rightImageNoText" | "topText";
+    layout?: "leftImage" | "leftTextImageIlustration" | "rightImageHoverText" | "topText";
+    titleImage1?: string;
+    textImage1?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        linkType?: "href" | "navLink" | "page";
+        href?: string;
+        page?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        openInNewTab?: boolean;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    titleImage2?: string;
+    textImage2?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        linkType?: "href" | "navLink" | "page";
+        href?: string;
+        page?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        openInNewTab?: boolean;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
   } | {
     _key: string;
     _type: "infoCard";
     paddingT?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
     paddingB?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
+    mobilePaddingT?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
+    mobilePaddingB?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
     theme?: "darkTheme" | "lightTheme";
     title?: string;
     text?: Array<{
@@ -977,6 +1092,8 @@ export type GetPageQueryResult = {
     theme?: "darkTheme" | "lightTheme";
     paddingT?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
     paddingB?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
+    mobilePaddingT?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
+    mobilePaddingB?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
     firstColumnText: Array<{
       children?: Array<{
         marks?: Array<string>;

@@ -1,5 +1,5 @@
-import {defineField, defineType} from 'sanity'
-import {LinkIcon} from '@sanity/icons'
+import { defineField, defineType } from 'sanity';
+import { LinkIcon } from '@sanity/icons';
 
 export const link = defineType({
   name: 'link',
@@ -14,9 +14,8 @@ export const link = defineType({
       initialValue: 'href',
       options: {
         list: [
-          {title: 'URL', value: 'href'},
-          {title: 'Page', value: 'page'},
-          {title: 'Nav Link', value: 'navLink'},
+          { title: 'URL', value: 'href' },
+          { title: 'Page', value: 'page' },
         ],
         layout: 'radio',
       },
@@ -25,54 +24,48 @@ export const link = defineType({
       name: 'urlTitle',
       title: 'URL Title',
       type: 'string',
-      hidden: ({parent}) => parent?.linkType !== 'href', // Show only if "href" is selected
+      hidden: ({ parent }) => parent?.linkType !== 'href',
     }),
     defineField({
       name: 'href',
       title: 'URL',
       type: 'url',
-      hidden: ({parent}) => parent?.linkType !== 'href', // Show only if "href" is selected
+      hidden: ({ parent }) => parent?.linkType !== 'href',
       validation: (Rule) =>
         Rule.custom((value, context: any) => {
           if (context.parent?.linkType === 'href' && !value) {
-            return 'URL is required when Link Type is URL'
+            return 'URL is required when Link Type is URL';
           }
-          return true
+          return true;
         }),
     }),
     defineField({
       name: 'page',
       title: 'Page',
       type: 'reference',
-      to: [{type: 'page'}],
-      hidden: ({parent}) => parent?.linkType !== 'page', // Show only if "page" is selected
+      to: [{ type: 'page' }],
+      hidden: ({ parent }) => parent?.linkType !== 'page',
       validation: (Rule) =>
         Rule.custom((value, context: any) => {
           if (context.parent?.linkType === 'page' && !value) {
-            return 'Page reference is required when Link Type is Page'
+            return 'Page reference is required when Link Type is Page';
           }
-          return true
+          return true;
         }),
     }),
     defineField({
-      name: 'navLink',
-      title: 'Nav Link',
+      name: 'openType',
+      title: 'Open Type',
       type: 'string',
-      hidden: ({parent}) => parent?.linkType !== 'navLink', // Show only if "navLink" is selected
-      validation: (Rule) =>
-        Rule.custom((value, context: any) => {
-          if (context.parent?.linkType === 'navLink' && !value) {
-            return 'Nav Link is required when Link Type is Nav Link'
-          }
-          return true
-        }),
-    }),
-    defineField({
-      name: 'openInNewTab',
-      title: 'Open in new tab',
-      type: 'boolean',
-      initialValue: false,
-      hidden: ({parent}) => parent?.linkType === 'navLink', // Hide for "navLink" type
+      hidden: ({ parent }) => parent?.linkType !== 'href',
+      options: {
+        list: [
+          { title: 'Open in new tab', value: 'newTab' },
+          { title: 'Open modal', value: 'modal' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'newTab',
     }),
   ],
 
@@ -81,18 +74,17 @@ export const link = defineType({
       linkType: 'linkType',
       pageTitle: 'page.name',
       urlTitle: 'urlTitle',
-      navLink: 'navLink',
     },
-    prepare({linkType, pageTitle, urlTitle, navLink}) {
-      let title = 'Untitled Link'
-      if (linkType === 'page') title = pageTitle || 'Untitled Page'
-      if (linkType === 'href') title = urlTitle || 'Untitled URL'
-      if (linkType === 'navLink') title = navLink || 'Untitled Nav Link'
+    prepare({ linkType, pageTitle, urlTitle }) {
+      let title = 'Untitled Link';
+
+      if (linkType === 'page') title = pageTitle || 'Untitled Page';
+      if (linkType === 'href') title = urlTitle || 'Untitled URL';
 
       return {
         title,
         media: LinkIcon,
-      }
+      };
     },
   },
-})
+});

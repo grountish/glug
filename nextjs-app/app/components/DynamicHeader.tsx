@@ -46,7 +46,6 @@ export default function DynamicHeader() {
         const rect = section.getBoundingClientRect();
         if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
           const sectionType = section.getAttribute("data-section");
-          console.log(`Detected section on mount: ${sectionType}`);
           if (sectionType === "lightTheme") {
             setTextColor("#712538");
             setCurrentLogo(darkLogoUrl);
@@ -59,7 +58,6 @@ export default function DynamicHeader() {
       });
 
       if (!found) {
-        // Default case if no section is detected
         setTextColor("#ECE8E2");
         setCurrentLogo(logoUrl);
       }
@@ -72,7 +70,6 @@ export default function DynamicHeader() {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             const sectionType = entry.target.getAttribute("data-section");
-            console.log(`Detected section while scrolling: ${sectionType}`);
             if (sectionType === "lightTheme") {
               setTextColor("#712538");
               setCurrentLogo(darkLogoUrl);
@@ -110,7 +107,7 @@ export default function DynamicHeader() {
             alt="Logo"
             width={150}
             height={50}
-            className="rounded-xl pr-20 w-auto h-auto transition-opacity duration-300"
+            className="rounded-xl md:pr-20 w-auto h-auto transition-opacity duration-300"
           />
         )}
       </Link>

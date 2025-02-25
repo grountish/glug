@@ -3,10 +3,8 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter, Teachers } from "next/font/google";
-import { draftMode } from "next/headers";
-import { VisualEditing, toPlainText } from "next-sanity";
+import { toPlainText } from "next-sanity";
 
-import DraftModeToast from "@/app/components/DraftModeToast";
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
@@ -61,18 +59,15 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isEnabled: isDraftMode } = await draftMode();
   const { data: settings } = await sanityFetch({
     query: settingsQuery,
   });
-
-  // return null;
 
   return (
     <html lang="en" className={`${teachers} text-black`}>
       <body>
         <section>
-          {/* <SanityLive onError={handleError} /> */}
+          <SanityLive onError={handleError} />
           {/* @ts-ignore */}
           {settings && <Header block={settings} />}
           <main>{children}</main>
