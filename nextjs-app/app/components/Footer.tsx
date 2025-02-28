@@ -1,11 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import { Settings as SettingsType } from "@/sanity.types";
+import { SettingsQueryResult, Settings as SettingsType } from "@/sanity.types";
 import Link from "next/link";
-import { urlForImage } from "@/sanity/lib/utils";
 import { PortableText, PortableTextBlock } from "next-sanity";
 
 type FooterProps = {
-  block: SettingsType;
+  block: SettingsQueryResult | null;
 };
 
 export default function Footer({ block }: FooterProps) {
@@ -15,7 +14,7 @@ export default function Footer({ block }: FooterProps) {
     <footer className="text-[#ECE8E2] flex flex-col space-y-4 lg:grid grid-cols-5 gap-4 items-start text-base justify-between pb-40 pt-20 lg:px-20 px-8 bg-[#712538] z-50 w-full font-teachers border-t border-[#ECE8E2]">
       <Link href="/">
         <img
-          src={(urlForImage(block.mainNavigation)?.url() as string) || ""}
+          src={block?.mainNavigation?.lightLogo?.url as string}
           alt="alttext"
           className="lg:w-1/3 h-auto"
         />

@@ -1,20 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Settings as SettingsType } from "@/sanity.types";
+import { SettingsQueryResult, Settings as SettingsType } from "@/sanity.types";
 import MenuIcon from "./MenuIcon";
 import Image from "next/image";
 import Link from "next/link";
 import { PortableText, PortableTextBlock } from "next-sanity";
 
 type MobileMenuProps = {
-  block: SettingsType | null;
+  block: SettingsQueryResult;
   onClose: () => void;
 };
 
 export default function MobileMenu({ onClose, block }: MobileMenuProps) {
   const [isAnimating, setIsAnimating] = useState(false);
-
+ 
   useEffect(() => {
     document.body.style.overflow = "hidden";
     setIsAnimating(true); // Start animation
@@ -46,7 +46,12 @@ export default function MobileMenu({ onClose, block }: MobileMenuProps) {
           className="rounded-xl md:pr-20 w-auto h-auto transition-opacity duration-300"
         />
         <button onClick={handleClose} aria-label="Close menu">
-          <MenuIcon width={26} height={25} color="#712538" isOpen={true} />
+          <MenuIcon
+            width={26}
+            height={25}
+            color={ "#712538" }
+            isOpen={true}
+          />
         </button>
       </div>
 
@@ -57,8 +62,8 @@ export default function MobileMenu({ onClose, block }: MobileMenuProps) {
             href={
               // @ts-ignore
               link?.linkType === "navLink"
-              // @ts-ignore
-                ? `/${link?.navLink}`
+                ? // @ts-ignore
+                  `/${link?.navLink}`
                 : // @ts-ignore
                   `/${link?.page?.slug?.current}`
             }
@@ -67,6 +72,7 @@ export default function MobileMenu({ onClose, block }: MobileMenuProps) {
           >
             {/* @ts-ignore */}
             {link?.linkType === "navLink" ? link?.navLink : link?.page?.name}
+            {link.urlTitle ?? ''}
           </Link>
         ))}
       </nav>

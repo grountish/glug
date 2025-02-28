@@ -3,6 +3,7 @@ import { FeatureCard as FeatureCardType } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/utils";
 import { PortableText, PortableTextBlock } from "next-sanity";
 import Button from "./Button";
+import Link from "next/link";
 
 type FeatureCardProps = {
   block: FeatureCardType;
@@ -11,6 +12,10 @@ type FeatureCardProps = {
 
 export default function FeatureCard({ block }: FeatureCardProps) {
   if (!block) return null;
+
+  const cta = block?.cta?.link;
+  const isExternalLink = cta?.linkType === "href" && cta?.openType === "newTab";
+
   return (
     <section
       className={`flex flex-col h-full bg-[${block?.backgroundColor?.hex?.toUpperCase()}] lg:px-20 px-5 pt-${block?.paddingT} pb-${block?.paddingB} text-[${block?.textColor?.hex?.toUpperCase()}]`}
@@ -28,11 +33,18 @@ export default function FeatureCard({ block }: FeatureCardProps) {
         <div className="lg:w-1/2">
           <h1 className="lg:text-[160px] text-8xl leading-[1] pb-16">{block?.title}</h1>
           <p className="pb-16">{block?.description}</p>
-          <Button
-            buttonText={block?.cta?.text as string}
-            variant={block?.cta?.variant}
-            buttonUrl={block?.cta?.text}
-          />
+
+          {cta && (
+            isExternalLink ? (
+              <a href={cta.href} target="_blank" rel="noopener noreferrer">
+                <Button buttonText={block?.cta?.text as string} variant={block?.cta?.variant} />
+              </a>
+            ) : (
+              <Link href={cta.href || "/"}>
+                <Button buttonText={block?.cta?.text as string} variant={block?.cta?.variant} />
+              </Link>
+            )
+          )}
         </div>
       </div>
     </section>
