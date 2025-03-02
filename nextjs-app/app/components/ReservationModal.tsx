@@ -39,17 +39,17 @@ export default function ReservationModal({
             width="26"
             height="25"
             viewBox="0 0 26 25"
-            fill="none"
+            fill="#712538"
           >
             <path
               d="M1.37744 1L24.6221 24.2446"
-              stroke="#ECE8E2"
+              stroke="#712538"
               strokeWidth="2"
               strokeMiterlimit="10"
             />
             <path
               d="M24.6221 1L1.37744 24.2446"
-              stroke="#ECE8E2"
+              stroke="#712538"
               strokeWidth="2"
               strokeMiterlimit="10"
             />

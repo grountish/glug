@@ -18,7 +18,7 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
 
   return (
     <section
-      className={`flex items-center justify-center text-[${block?.textColor?.hex}] text-3xl pt-${block?.paddingT} pb-${block?.paddingB} font-semibold`}
+      className={`flex items-center justify-center text-[${block?.textColor?.hex}] text-3xl pt-${block?.paddingT} pb-${block?.paddingB}`}
       data-section={block?.theme}
     >
       {layout === "leftImage" && (
@@ -41,8 +41,8 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
       )}
 
       {layout === "topText" && (
-        <div className="flex flex-col items-end lg:px-20 px-5">
-          <div className="max-w-[580px] pb-20">
+        <div className="flex flex-col items-end lg:px-20 px-5 lg:pl-40">
+           <div className="max-w-[580px] pb-20 font-semibold">
             <PortableText value={block?.text as PortableTextBlock[]} />
           </div>
           <div className="flex flex-col lg:flex-row gap-6 justify-end lg:pl-40 space-y-6 lg:space-y-0">
@@ -51,7 +51,7 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
                 key={idx}
                 src={urlForImage(image)?.url() as string}
                 alt={`alttext-${idx}`}
-                className="lg:rounded-xl rounded-3xl w-[600px] h-auto"
+                className="lg:rounded-xl rounded-3xl lg:w-1/2 w-full h-auto"
               />
             ))}
           </div>
@@ -61,7 +61,7 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
       {layout === "leftTextImageIlustration" && (
         <div className="flex flex-col lg:flex-row items-end gap-6 lg:px-20 px-5">
           <div className="lg:w-1/2">
-            <div className="max-w-[580px] pb-20">
+            <div className="max-w-[580px] pb-20 font-semibold">
               <PortableText value={block?.text as PortableTextBlock[]} />
             </div>
             <img
@@ -82,10 +82,8 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
 
       {layout === "rightImageHoverText" && (
         <div className="flex lg:flex-row flex-col items-start justify-center gap-6 lg:pl-40 px-5">
-          {/* Image 1 */}
           {block.images?.[0] && (
             <div className="lg:w-1/2 w-full">
-              {/* Image */}
               <div
                 className="relative"
                 onMouseEnter={() => setHoveredImage(0)}
@@ -96,7 +94,6 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
                   alt="alttext-1"
                   className="lg:rounded-xl rounded-3xl w-full h-auto transition-opacity duration-300"
                 />
-                {/* Hover Effect (Only for lg: screens) */}
                 {block?.textImage1 && (
                   <div
                     className={`absolute inset-0 hidden lg:flex flex-col items-start justify-start transition-opacity duration-300 rounded-xl ${
@@ -123,7 +120,6 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
                   </div>
                 )}
               </div>
-              {/* Mobile Text Below Image */}
               <div className="lg:hidden text-left mt-16 mb-24">
                 {block.titleImage1 && (
                   <h3 className="text-3xl font-bold text-[#ECE8E2]">
@@ -145,11 +141,8 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
               </div>
             </div>
           )}
-
-          {/* Image 2 */}
           {block.images?.[1] && (
             <div className="lg:w-1/2 w-full">
-              {/* Image */}
               <div
                 className="relative"
                 onMouseEnter={() => setHoveredImage(1)}
@@ -160,7 +153,6 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
                   alt="alttext-2"
                   className="lg:rounded-xl rounded-3xl w-full h-auto transition-opacity duration-300"
                 />
-                {/* Hover Effect (Only for lg: screens) */}
                 {block?.textImage2 && (
                   <div
                     className={`absolute inset-0 hidden lg:flex flex-col items-start justify-start transition-opacity duration-300 rounded-xl ${
@@ -187,7 +179,6 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
                   </div>
                 )}
               </div>
-              {/* Mobile Text Below Image */}
               <div className="lg:hidden text-left mt-16">
                 {block.titleImage2 && (
                   <h3 className="text-3xl font-bold text-[#ECE8E2]">
@@ -199,7 +190,7 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
                     value={block?.textImage2 as PortableTextBlock[]}
                     components={{
                       block: ({ children }) => (
-                        <p className="text-[#ECE8E2] font-medium text-lg mt-2">
+                        <p className="text-[#ECE8E2] text-lg mt-2">
                           {children}
                         </p>
                       ),

@@ -24,6 +24,7 @@ export default function Header({ block }: HeaderProps) {
     setModalUrl(url);
     setIsModalOpen(true);
   };
+
   if (!block) return null;
 
   return (
@@ -31,16 +32,13 @@ export default function Header({ block }: HeaderProps) {
       <header className="lg:hidden flex justify-between w-full fixed top-8 left-0 px-8 items-center z-50">
         <DynamicHeader />
         <button onClick={toggleMenu} aria-label="Toggle menu">
-          <MenuIcon
-            width={40}
-            height={22}
-            color="#712538"
-            isOpen={isMenuOpen}
-          />
+          <MenuIcon width={40} height={22} color="#712538" isOpen={isMenuOpen} />
         </button>
       </header>
 
-      {isMenuOpen &&  <MobileMenu block={block} onClose={toggleMenu} />}
+      {isMenuOpen && (
+        <MobileMenu block={block} onClose={toggleMenu} onOpenModal={handleOpenModal} />
+      )}
 
       <header className="fixed top-0 left-0 lg:flex hidden items-center text-base justify-between px-10 py-8 bg-transparent z-50 w-full font-teachers transition-colors duration-300">
         <DynamicHeader />
@@ -117,6 +115,7 @@ export default function Header({ block }: HeaderProps) {
           })}
         </nav>
       </header>
+
 
       {isModalOpen && modalUrl && (
         <ReservationModal
