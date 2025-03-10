@@ -117,7 +117,8 @@ export type InfoCard = {
     style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet" | "number";
     markDefs?: Array<{
-      linkType?: "href" | "page" | "navLink";
+      linkType?: "href" | "page";
+      urlTitle?: string;
       href?: string;
       page?: {
         _ref: string;
@@ -125,7 +126,7 @@ export type InfoCard = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "page";
       };
-      openInNewTab?: boolean;
+      openType?: "newTab" | "modal";
       _type: "link";
       _key: string;
     }>;
@@ -165,7 +166,8 @@ export type InfoWithCTA = {
     style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet" | "number";
     markDefs?: Array<{
-      linkType?: "href" | "page" | "navLink";
+      linkType?: "href" | "page";
+      urlTitle?: string;
       href?: string;
       page?: {
         _ref: string;
@@ -173,7 +175,7 @@ export type InfoWithCTA = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "page";
       };
-      openInNewTab?: boolean;
+      openType?: "newTab" | "modal";
       _type: "link";
       _key: string;
     }>;
@@ -191,7 +193,8 @@ export type InfoWithCTA = {
     style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet" | "number";
     markDefs?: Array<{
-      linkType?: "href" | "page" | "navLink";
+      linkType?: "href" | "page";
+      urlTitle?: string;
       href?: string;
       page?: {
         _ref: string;
@@ -199,7 +202,7 @@ export type InfoWithCTA = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "page";
       };
-      openInNewTab?: boolean;
+      openType?: "newTab" | "modal";
       _type: "link";
       _key: string;
     }>;
@@ -257,6 +260,8 @@ export type ImageTextBlock = {
   theme?: "darkTheme" | "lightTheme";
   paddingT?: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 80 | 96;
   paddingB?: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 80 | 96;
+  mobilePaddingT?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
+  mobilePaddingB?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96;
   text?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -267,7 +272,8 @@ export type ImageTextBlock = {
     style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet" | "number";
     markDefs?: Array<{
-      linkType?: "href" | "page" | "navLink";
+      linkType?: "href" | "page";
+      urlTitle?: string;
       href?: string;
       page?: {
         _ref: string;
@@ -275,7 +281,7 @@ export type ImageTextBlock = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "page";
       };
-      openInNewTab?: boolean;
+      openType?: "newTab" | "modal";
       _type: "link";
       _key: string;
     }>;
@@ -319,7 +325,8 @@ export type ImageTextBlock = {
     style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet" | "number";
     markDefs?: Array<{
-      linkType?: "href" | "page" | "navLink";
+      linkType?: "href" | "page";
+      urlTitle?: string;
       href?: string;
       page?: {
         _ref: string;
@@ -327,7 +334,7 @@ export type ImageTextBlock = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "page";
       };
-      openInNewTab?: boolean;
+      openType?: "newTab" | "modal";
       _type: "link";
       _key: string;
     }>;
@@ -346,7 +353,8 @@ export type ImageTextBlock = {
     style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet" | "number";
     markDefs?: Array<{
-      linkType?: "href" | "page" | "navLink";
+      linkType?: "href" | "page";
+      urlTitle?: string;
       href?: string;
       page?: {
         _ref: string;
@@ -354,7 +362,7 @@ export type ImageTextBlock = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "page";
       };
-      openInNewTab?: boolean;
+      openType?: "newTab" | "modal";
       _type: "link";
       _key: string;
     }>;
@@ -374,7 +382,8 @@ export type BlockContent = Array<{
   style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
   listItem?: "bullet" | "number";
   markDefs?: Array<{
-    linkType?: "href" | "page" | "navLink";
+    linkType?: "href" | "page";
+    urlTitle?: string;
     href?: string;
     page?: {
       _ref: string;
@@ -382,7 +391,7 @@ export type BlockContent = Array<{
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "page";
     };
-    openInNewTab?: boolean;
+    openType?: "newTab" | "modal";
     _type: "link";
     _key: string;
   }>;
@@ -439,7 +448,8 @@ export type Settings = {
     secondColumnFooter: BlockContent;
     thirdColumnFooter: BlockContent;
     fourthColumnFooter: BlockContent;
-    fifthColumnFooter: BlockContent;
+    workWithUs?: string;
+    email?: string;
     _type: "image";
   };
   description?: Array<{
@@ -837,7 +847,8 @@ export type SettingsQueryResult = {
     secondColumnFooter: BlockContent;
     thirdColumnFooter: BlockContent;
     fourthColumnFooter: BlockContent;
-    fifthColumnFooter: BlockContent;
+    workWithUs?: string;
+    email?: string;
     _type: "image";
   };
   description?: Array<{
@@ -933,6 +944,8 @@ export type GetPageQueryResult = {
     theme?: "darkTheme" | "lightTheme";
     paddingT?: 0 | 12 | 16 | 20 | 24 | 32 | 4 | 40 | 48 | 56 | 64 | 8 | 80 | 96;
     paddingB?: 0 | 12 | 16 | 20 | 24 | 32 | 4 | 40 | 48 | 56 | 64 | 8 | 80 | 96;
+    mobilePaddingT?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
+    mobilePaddingB?: 0.5 | 0 | 1.5 | 1 | 10 | 11 | 12 | 14 | 16 | 2.5 | 2 | 20 | 24 | 28 | 3.5 | 3 | 32 | 36 | 4 | 40 | 44 | 48 | 5 | 52 | 56 | 6 | 60 | 64 | 7 | 72 | 8 | 80 | 9 | 96;
     text?: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -943,7 +956,8 @@ export type GetPageQueryResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
       listItem?: "bullet" | "number";
       markDefs?: Array<{
-        linkType?: "href" | "navLink" | "page";
+        linkType?: "href" | "page";
+        urlTitle?: string;
         href?: string;
         page?: {
           _ref: string;
@@ -951,7 +965,7 @@ export type GetPageQueryResult = {
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "page";
         };
-        openInNewTab?: boolean;
+        openType?: "modal" | "newTab";
         _type: "link";
         _key: string;
       }>;
@@ -995,7 +1009,8 @@ export type GetPageQueryResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
       listItem?: "bullet" | "number";
       markDefs?: Array<{
-        linkType?: "href" | "navLink" | "page";
+        linkType?: "href" | "page";
+        urlTitle?: string;
         href?: string;
         page?: {
           _ref: string;
@@ -1003,7 +1018,7 @@ export type GetPageQueryResult = {
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "page";
         };
-        openInNewTab?: boolean;
+        openType?: "modal" | "newTab";
         _type: "link";
         _key: string;
       }>;
@@ -1022,7 +1037,8 @@ export type GetPageQueryResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
       listItem?: "bullet" | "number";
       markDefs?: Array<{
-        linkType?: "href" | "navLink" | "page";
+        linkType?: "href" | "page";
+        urlTitle?: string;
         href?: string;
         page?: {
           _ref: string;
@@ -1030,7 +1046,7 @@ export type GetPageQueryResult = {
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "page";
         };
-        openInNewTab?: boolean;
+        openType?: "modal" | "newTab";
         _type: "link";
         _key: string;
       }>;
@@ -1057,7 +1073,8 @@ export type GetPageQueryResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
       listItem?: "bullet" | "number";
       markDefs?: Array<{
-        linkType?: "href" | "navLink" | "page";
+        linkType?: "href" | "page";
+        urlTitle?: string;
         href?: string;
         page?: {
           _ref: string;
@@ -1065,7 +1082,7 @@ export type GetPageQueryResult = {
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "page";
         };
-        openInNewTab?: boolean;
+        openType?: "modal" | "newTab";
         _type: "link";
         _key: string;
       }>;
@@ -1104,7 +1121,8 @@ export type GetPageQueryResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
       listItem?: "bullet" | "number";
       markDefs?: Array<{
-        linkType?: "href" | "navLink" | "page";
+        linkType?: "href" | "page";
+        urlTitle?: string;
         href?: string;
         page?: {
           _ref: string;
@@ -1112,7 +1130,7 @@ export type GetPageQueryResult = {
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "page";
         };
-        openInNewTab?: boolean;
+        openType?: "modal" | "newTab";
         _type: "link";
         _key: string;
       }>;
@@ -1130,7 +1148,8 @@ export type GetPageQueryResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
       listItem?: "bullet" | "number";
       markDefs?: Array<{
-        linkType?: "href" | "navLink" | "page";
+        linkType?: "href" | "page";
+        urlTitle?: string;
         href?: string;
         page?: {
           _ref: string;
@@ -1138,7 +1157,7 @@ export type GetPageQueryResult = {
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "page";
         };
-        openInNewTab?: boolean;
+        openType?: "modal" | "newTab";
         _type: "link";
         _key: string;
       }>;

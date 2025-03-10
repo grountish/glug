@@ -27,14 +27,14 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
             <img
               src={urlForImage(block?.images[0])?.url() as string}
               alt="alttext"
-              className="lg:rounded-xl rounded-3xl w-full h-auto"
+              className="lg:rounded-xl anim rounded-3xl w-full h-auto"
             />
           </div>
           <div className="lg:w-1/2 flex justify-center">
             <img
               src={urlForImage(block?.illustration)?.url() as string}
               alt="alttext"
-              className="w-[550px]"
+              className="w-[350px] anim"
             />
           </div>
         </div>
@@ -42,18 +42,20 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
 
       {layout === "topText" && (
         <div className="flex flex-col items-end lg:px-20 px-5 lg:pl-40">
-           <div className="max-w-[580px] pb-20 font-semibold">
-            <PortableText value={block?.text as PortableTextBlock[]} />
-          </div>
-          <div className="flex flex-col lg:flex-row gap-6 justify-end lg:pl-40 space-y-6 lg:space-y-0">
-            {block.images?.map((image, idx) => (
-              <img
-                key={idx}
-                src={urlForImage(image)?.url() as string}
-                alt={`alttext-${idx}`}
-                className="lg:rounded-xl rounded-3xl lg:w-1/2 w-full h-auto"
-              />
-            ))}
+          <div className="flex flex-col lg:flex-row justify-end items-end lg:pl-40 gap-8">
+            <img
+              src={urlForImage(block.images[1])?.url() as string}
+              className="lg:rounded-xl rounded-3xl lg:w-1/2 w-full h-[700px] object-cover anim"
+            />
+            <div className="flex flex-col lg:w-1/2 w-full font-semibold anim">
+              <PortableText value={block?.text as PortableTextBlock[]} />
+              <div className="relative w-full h-[700px] mt-8">
+                <img
+                  src={urlForImage(block.images[0])?.url() as string}
+                  className="lg:rounded-xl rounded-3xl w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -61,20 +63,20 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
       {layout === "leftTextImageIlustration" && (
         <div className="flex flex-col lg:flex-row items-end gap-6 lg:px-20 px-5">
           <div className="lg:w-1/2">
-            <div className="max-w-[580px] pb-20 font-semibold">
+            <div className="max-w-[580px] pb-20 font-semibold anim">
               <PortableText value={block?.text as PortableTextBlock[]} />
             </div>
             <img
               src={urlForImage(block?.images[0])?.url() as string}
               alt="alttext"
-              className="rounded-xl w-full h-auto"
+              className="rounded-xl w-full h-auto anim"
             />
           </div>
           <div className="lg:w-1/2 w-full flex justify-center">
             <img
               src={urlForImage(block?.illustration)?.url() as string}
               alt="alttext"
-              className="w-[550px]"
+              className="w-[350px] anim"
             />
           </div>
         </div>
@@ -92,7 +94,7 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
                 <img
                   src={urlForImage(block.images[0])?.url() as string}
                   alt="alttext-1"
-                  className="lg:rounded-xl rounded-3xl w-full h-auto transition-opacity duration-300"
+                  className="lg:rounded-xl rounded-3xl w-full h-auto transition-opacity duration-300 anim"
                 />
                 {block?.textImage1 && (
                   <div
@@ -151,7 +153,7 @@ export default function ImageTextBlock({ block }: ImageTextBlockProps) {
                 <img
                   src={urlForImage(block.images[1])?.url() as string}
                   alt="alttext-2"
-                  className="lg:rounded-xl rounded-3xl w-full h-auto transition-opacity duration-300"
+                  className="lg:rounded-xl rounded-3xl w-full h-auto transition-opacity duration-300 anim"
                 />
                 {block?.textImage2 && (
                   <div

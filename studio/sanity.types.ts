@@ -653,7 +653,7 @@ export type Settings = {
     secondColumnFooter: BlockContent
     thirdColumnFooter: BlockContent
     fourthColumnFooter: BlockContent
-    fifthColumnFooter: BlockContent
+    email: BlockContent
     _type: 'image'
   }
   description?: Array<{

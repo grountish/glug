@@ -23,7 +23,8 @@ export const settings = defineType({
       name: 'mainNavigation',
       title: 'Navegación principal',
       type: 'object',
-      description: 'Añade el logo de la empresa en formato SVG y la información de la barra de navegación.',
+      description:
+        'Añade el logo de la empresa en formato SVG y la información de la barra de navegación.',
       fields: [
         defineField({
           name: 'lightLogo',
@@ -87,15 +88,18 @@ export const settings = defineType({
           name: 'fourthColumnFooter',
           title: 'Cuarta Columna Footer',
           type: 'blockContent',
-          description: 'Añade la información de la tercera columna del footer.',
+          description: 'Añade la información de la cuarta columna del footer.',
           validation: (Rule) => Rule.required(),
         }),
         defineField({
-          name: 'fifthColumnFooter',
-          title: 'Quinta Columna Footer',
-          type: 'blockContent',
-          description: 'Añade la información de la tercera columna del footer.',
-          validation: (Rule) => Rule.required(),
+          name: 'workWithUs',
+          title: 'Trabaja con nosotros',
+          type: 'string',
+        }),
+        defineField({
+          name: 'email',
+          title: 'Email',
+          type: 'string',
         }),
       ],
     }),

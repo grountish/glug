@@ -29,13 +29,13 @@ export default function InfoWithCTA({ block }: InfoWithCTAProps) {
 
   return (
     <section
-      className={`lg:grid lg:grid-cols-12 pt-${block?.paddingT} pb-${block?.paddingB} text-[${block?.textColor?.hex}] md:px-20 px-5`}
+      className={`lg:grid anim lg:grid-cols-12 pt-${block?.paddingT} pb-${block?.paddingB} text-[${block?.textColor?.hex}] md:px-20 px-5`}
       data-section={block?.theme}
     >
-      <div className="text-3xl col-span-6 pb-96 lg:pb-0 font-semibold">
+      <div className="text-3xl col-span-7 pb-96 lg:pb-0 font-semibold">
         <PortableText value={block.firstColumnText as PortableTextBlock[]} />
       </div>
-      <div className="text-base col-span-5 pb-12 lg:pb-0 font-semibold">
+      <div className="text-base col-span-4 pb-12 lg:pb-0 font-semibold">
         <PortableText value={block.secondColumnText as PortableTextBlock[]} />
       </div>
       <div className="col-span-1">

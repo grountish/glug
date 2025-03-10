@@ -1833,12 +1833,15 @@
                               {
                                 "type": "string",
                                 "value": "page"
-                              },
-                              {
-                                "type": "string",
-                                "value": "navLink"
                               }
                             ]
+                          },
+                          "optional": true
+                        },
+                        "urlTitle": {
+                          "type": "objectAttribute",
+                          "value": {
+                            "type": "string"
                           },
                           "optional": true
                         },
@@ -1879,10 +1882,20 @@
                           },
                           "optional": true
                         },
-                        "openInNewTab": {
+                        "openType": {
                           "type": "objectAttribute",
                           "value": {
-                            "type": "boolean"
+                            "type": "union",
+                            "of": [
+                              {
+                                "type": "string",
+                                "value": "newTab"
+                              },
+                              {
+                                "type": "string",
+                                "value": "modal"
+                              }
+                            ]
                           },
                           "optional": true
                         },
@@ -2760,12 +2773,15 @@
                               {
                                 "type": "string",
                                 "value": "page"
-                              },
-                              {
-                                "type": "string",
-                                "value": "navLink"
                               }
                             ]
+                          },
+                          "optional": true
+                        },
+                        "urlTitle": {
+                          "type": "objectAttribute",
+                          "value": {
+                            "type": "string"
                           },
                           "optional": true
                         },
@@ -2806,10 +2822,20 @@
                           },
                           "optional": true
                         },
-                        "openInNewTab": {
+                        "openType": {
                           "type": "objectAttribute",
                           "value": {
-                            "type": "boolean"
+                            "type": "union",
+                            "of": [
+                              {
+                                "type": "string",
+                                "value": "newTab"
+                              },
+                              {
+                                "type": "string",
+                                "value": "modal"
+                              }
+                            ]
                           },
                           "optional": true
                         },
@@ -2997,12 +3023,15 @@
                               {
                                 "type": "string",
                                 "value": "page"
-                              },
-                              {
-                                "type": "string",
-                                "value": "navLink"
                               }
                             ]
+                          },
+                          "optional": true
+                        },
+                        "urlTitle": {
+                          "type": "objectAttribute",
+                          "value": {
+                            "type": "string"
                           },
                           "optional": true
                         },
@@ -3043,10 +3072,20 @@
                           },
                           "optional": true
                         },
-                        "openInNewTab": {
+                        "openType": {
                           "type": "objectAttribute",
                           "value": {
-                            "type": "boolean"
+                            "type": "union",
+                            "of": [
+                              {
+                                "type": "string",
+                                "value": "newTab"
+                              },
+                              {
+                                "type": "string",
+                                "value": "modal"
+                              }
+                            ]
                           },
                           "optional": true
                         },
@@ -3531,6 +3570,296 @@
           },
           "optional": true
         },
+        "mobilePaddingT": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "number",
+                "value": 0
+              },
+              {
+                "type": "number",
+                "value": 0.5
+              },
+              {
+                "type": "number",
+                "value": 1
+              },
+              {
+                "type": "number",
+                "value": 1.5
+              },
+              {
+                "type": "number",
+                "value": 2
+              },
+              {
+                "type": "number",
+                "value": 2.5
+              },
+              {
+                "type": "number",
+                "value": 3
+              },
+              {
+                "type": "number",
+                "value": 3.5
+              },
+              {
+                "type": "number",
+                "value": 4
+              },
+              {
+                "type": "number",
+                "value": 5
+              },
+              {
+                "type": "number",
+                "value": 6
+              },
+              {
+                "type": "number",
+                "value": 7
+              },
+              {
+                "type": "number",
+                "value": 8
+              },
+              {
+                "type": "number",
+                "value": 9
+              },
+              {
+                "type": "number",
+                "value": 10
+              },
+              {
+                "type": "number",
+                "value": 11
+              },
+              {
+                "type": "number",
+                "value": 12
+              },
+              {
+                "type": "number",
+                "value": 14
+              },
+              {
+                "type": "number",
+                "value": 16
+              },
+              {
+                "type": "number",
+                "value": 20
+              },
+              {
+                "type": "number",
+                "value": 24
+              },
+              {
+                "type": "number",
+                "value": 28
+              },
+              {
+                "type": "number",
+                "value": 32
+              },
+              {
+                "type": "number",
+                "value": 36
+              },
+              {
+                "type": "number",
+                "value": 40
+              },
+              {
+                "type": "number",
+                "value": 44
+              },
+              {
+                "type": "number",
+                "value": 48
+              },
+              {
+                "type": "number",
+                "value": 52
+              },
+              {
+                "type": "number",
+                "value": 56
+              },
+              {
+                "type": "number",
+                "value": 60
+              },
+              {
+                "type": "number",
+                "value": 64
+              },
+              {
+                "type": "number",
+                "value": 72
+              },
+              {
+                "type": "number",
+                "value": 80
+              },
+              {
+                "type": "number",
+                "value": 96
+              }
+            ]
+          },
+          "optional": true
+        },
+        "mobilePaddingB": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "number",
+                "value": 0
+              },
+              {
+                "type": "number",
+                "value": 0.5
+              },
+              {
+                "type": "number",
+                "value": 1
+              },
+              {
+                "type": "number",
+                "value": 1.5
+              },
+              {
+                "type": "number",
+                "value": 2
+              },
+              {
+                "type": "number",
+                "value": 2.5
+              },
+              {
+                "type": "number",
+                "value": 3
+              },
+              {
+                "type": "number",
+                "value": 3.5
+              },
+              {
+                "type": "number",
+                "value": 4
+              },
+              {
+                "type": "number",
+                "value": 5
+              },
+              {
+                "type": "number",
+                "value": 6
+              },
+              {
+                "type": "number",
+                "value": 7
+              },
+              {
+                "type": "number",
+                "value": 8
+              },
+              {
+                "type": "number",
+                "value": 9
+              },
+              {
+                "type": "number",
+                "value": 10
+              },
+              {
+                "type": "number",
+                "value": 11
+              },
+              {
+                "type": "number",
+                "value": 12
+              },
+              {
+                "type": "number",
+                "value": 14
+              },
+              {
+                "type": "number",
+                "value": 16
+              },
+              {
+                "type": "number",
+                "value": 20
+              },
+              {
+                "type": "number",
+                "value": 24
+              },
+              {
+                "type": "number",
+                "value": 28
+              },
+              {
+                "type": "number",
+                "value": 32
+              },
+              {
+                "type": "number",
+                "value": 36
+              },
+              {
+                "type": "number",
+                "value": 40
+              },
+              {
+                "type": "number",
+                "value": 44
+              },
+              {
+                "type": "number",
+                "value": 48
+              },
+              {
+                "type": "number",
+                "value": 52
+              },
+              {
+                "type": "number",
+                "value": 56
+              },
+              {
+                "type": "number",
+                "value": 60
+              },
+              {
+                "type": "number",
+                "value": 64
+              },
+              {
+                "type": "number",
+                "value": 72
+              },
+              {
+                "type": "number",
+                "value": 80
+              },
+              {
+                "type": "number",
+                "value": 96
+              }
+            ]
+          },
+          "optional": true
+        },
         "text": {
           "type": "objectAttribute",
           "value": {
@@ -3662,12 +3991,15 @@
                               {
                                 "type": "string",
                                 "value": "page"
-                              },
-                              {
-                                "type": "string",
-                                "value": "navLink"
                               }
                             ]
+                          },
+                          "optional": true
+                        },
+                        "urlTitle": {
+                          "type": "objectAttribute",
+                          "value": {
+                            "type": "string"
                           },
                           "optional": true
                         },
@@ -3708,10 +4040,20 @@
                           },
                           "optional": true
                         },
-                        "openInNewTab": {
+                        "openType": {
                           "type": "objectAttribute",
                           "value": {
-                            "type": "boolean"
+                            "type": "union",
+                            "of": [
+                              {
+                                "type": "string",
+                                "value": "newTab"
+                              },
+                              {
+                                "type": "string",
+                                "value": "modal"
+                              }
+                            ]
                           },
                           "optional": true
                         },
@@ -4077,12 +4419,15 @@
                               {
                                 "type": "string",
                                 "value": "page"
-                              },
-                              {
-                                "type": "string",
-                                "value": "navLink"
                               }
                             ]
+                          },
+                          "optional": true
+                        },
+                        "urlTitle": {
+                          "type": "objectAttribute",
+                          "value": {
+                            "type": "string"
                           },
                           "optional": true
                         },
@@ -4123,10 +4468,20 @@
                           },
                           "optional": true
                         },
-                        "openInNewTab": {
+                        "openType": {
                           "type": "objectAttribute",
                           "value": {
-                            "type": "boolean"
+                            "type": "union",
+                            "of": [
+                              {
+                                "type": "string",
+                                "value": "newTab"
+                              },
+                              {
+                                "type": "string",
+                                "value": "modal"
+                              }
+                            ]
                           },
                           "optional": true
                         },
@@ -4321,12 +4676,15 @@
                               {
                                 "type": "string",
                                 "value": "page"
-                              },
-                              {
-                                "type": "string",
-                                "value": "navLink"
                               }
                             ]
+                          },
+                          "optional": true
+                        },
+                        "urlTitle": {
+                          "type": "objectAttribute",
+                          "value": {
+                            "type": "string"
                           },
                           "optional": true
                         },
@@ -4367,10 +4725,20 @@
                           },
                           "optional": true
                         },
-                        "openInNewTab": {
+                        "openType": {
                           "type": "objectAttribute",
                           "value": {
-                            "type": "boolean"
+                            "type": "union",
+                            "of": [
+                              {
+                                "type": "string",
+                                "value": "newTab"
+                              },
+                              {
+                                "type": "string",
+                                "value": "modal"
+                              }
+                            ]
                           },
                           "optional": true
                         },
@@ -4562,12 +4930,15 @@
                         {
                           "type": "string",
                           "value": "page"
-                        },
-                        {
-                          "type": "string",
-                          "value": "navLink"
                         }
                       ]
+                    },
+                    "optional": true
+                  },
+                  "urlTitle": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
                     },
                     "optional": true
                   },
@@ -4608,10 +4979,20 @@
                     },
                     "optional": true
                   },
-                  "openInNewTab": {
+                  "openType": {
                     "type": "objectAttribute",
                     "value": {
-                      "type": "boolean"
+                      "type": "union",
+                      "of": [
+                        {
+                          "type": "string",
+                          "value": "newTab"
+                        },
+                        {
+                          "type": "string",
+                          "value": "modal"
+                        }
+                      ]
                     },
                     "optional": true
                   },
@@ -4955,13 +5336,19 @@
               },
               "optional": false
             },
-            "fifthColumnFooter": {
+            "workWithUs": {
               "type": "objectAttribute",
               "value": {
-                "type": "inline",
-                "name": "blockContent"
+                "type": "string"
               },
-              "optional": false
+              "optional": true
+            },
+            "email": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string"
+              },
+              "optional": true
             },
             "_type": {
               "type": "objectAttribute",

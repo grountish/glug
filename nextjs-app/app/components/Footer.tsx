@@ -11,7 +11,7 @@ export default function Footer({ block }: FooterProps) {
   if (!block) return null;
 
   return (
-    <footer className="text-[#ECE8E2] flex flex-col space-y-4 lg:grid grid-cols-5 gap-4 items-start text-base justify-between pb-40 pt-20 lg:px-20 px-8 bg-[#712538] z-50 w-full font-teachers border-t border-[#ECE8E2]">
+    <footer className="text-[#ECE8E2] flex flex-col lg:grid grid-cols-5 gap-4 [align-items:flex-start] text-base justify-start pb-40 pt-20 lg:px-20 px-8 bg-[#712538] z-50 w-full font-teachers border-t border-[#ECE8E2]">
       <Link href="/">
         <img
           src={block?.mainNavigation?.lightLogo?.url as string}
@@ -19,7 +19,7 @@ export default function Footer({ block }: FooterProps) {
           className="lg:w-1/3 h-auto"
         />
       </Link>
-      <div className="text-left">
+      <div className="text-left h-full">
         <PortableText
           value={block.footer?.secondColumnFooter as PortableTextBlock[]}
         />
@@ -34,10 +34,10 @@ export default function Footer({ block }: FooterProps) {
           value={block.footer?.fourthColumnFooter as PortableTextBlock[]}
         />
       </div>
-      <div className="text-left">
-        <PortableText
-          value={block.footer?.fifthColumnFooter as PortableTextBlock[]}
-        />
+      <div className="text-left cursor-pointer max-w-32">
+        <a href={`mailto:${block.footer?.email}`}>
+          <p>{block.footer?.workWithUs}</p>
+        </a>
       </div>
     </footer>
   );

@@ -40,11 +40,10 @@ export default function Header({ block }: HeaderProps) {
         <MobileMenu block={block} onClose={toggleMenu} onOpenModal={handleOpenModal} />
       )}
 
-      <header className="fixed top-0 left-0 lg:flex hidden items-center text-base justify-between px-10 py-8 bg-transparent z-50 w-full font-teachers transition-colors duration-300">
+      <header className="fixed top-0 left-0 lg:flex hidden items-center text-[14px] justify-between px-20 py-8 bg-transparent z-50 w-full font-teachers transition-colors duration-300">
         <DynamicHeader />
-
         <div className="flex w-1/2">
-          <div className="text-left pr-24 leading-tight">
+          <div className="text-left pl-12 pr-24 leading-tight">
             <PortableText
               value={
                 block?.mainNavigation?.secondColumnNav as PortableTextBlock[]
@@ -60,7 +59,7 @@ export default function Header({ block }: HeaderProps) {
           </div>
         </div>
 
-        <nav className="flex justify-end gap-8 w-1/2 font-semibold">
+        <nav className="flex justify-end gap-11 w-1/2 font-semibold">
           {block?.mainNavigation?.navLinks?.map((link, i) => {
             if (!link) return null;
 

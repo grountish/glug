@@ -11,6 +11,7 @@ import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { settingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/utils";
 import { handleError } from "./client-utils";
+import GlobalAnimations from "./components/GlobalAnimations";
 
 /**
  * Generate metadata for the page.
@@ -68,6 +69,7 @@ export default async function RootLayout({
       <body>
         <section>
           <SanityLive onError={handleError} />
+          <GlobalAnimations />
           {/* @ts-ignore */}
           {settings && <Header block={settings} />}
           <main>{children}</main>

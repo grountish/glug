@@ -24,7 +24,7 @@ export default function MainHero({ block }: MainHeroProps) {
         aria-label={stegaClean(block?.backgroundImageAltText as string) || ""}
       >
         <img
-          className="absolute max-w-full md:w-[1300px] w-72"
+          className="absolute max-w-full md:w-[1300px] w-72 anim"
           src={urlForImage(block?.logo)?.url() as string}
           alt={stegaClean(block?.logoAltText as string) || ""}
         />
