@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.anim {
+    opacity: 0; /* ✅ Keeps elements hidden BEFORE animations start */
+    transition: opacity 0.05s ease-in-out; /* ✅ Prevents instant pop-in */
+  }

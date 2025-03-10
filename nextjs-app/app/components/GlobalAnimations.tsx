@@ -8,18 +8,16 @@ const GlobalAnimations = () => {
   const pathname = usePathname();
   const [hydrated, setHydrated] = useState(false);
 
-  // ✅ Wait for Next.js to finish hydration before running animations
+  // ✅ Wait until Next.js has fully hydrated to avoid flashing
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    setTimeout(() => {
       setHydrated(true);
-    }, 100); // Small delay to ensure hydration completes
-
-    return () => clearTimeout(timeout);
+    }, 50); // Small delay to allow content to fully load
   }, []);
 
   useEffect(() => {
     if (hydrated) {
-      triggerAnimations();
+      triggerAnimations(); // ✅ Start animations only after hydration
     }
   }, [pathname, hydrated]); // ✅ Runs only after hydration is complete
 
