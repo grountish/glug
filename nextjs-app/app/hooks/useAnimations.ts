@@ -19,7 +19,7 @@ export const triggerAnimations = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 1.2, // Slightly longer for smooth effect
+          duration: 0.5, // Slightly longer for smooth effect
           ease: "power2.out",
           stagger: 0.15, // Delayed effect for a clean transition
           scrollTrigger: {
@@ -35,6 +35,6 @@ export const triggerAnimations = () => {
     // ✅ Ensure GSAP refreshes animations after everything loads
     setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 700);
+    }, 400);
   });
 };
