@@ -1,16 +1,36 @@
 import { defineQuery } from "next-sanity";
 
 export const settingsQuery = defineQuery(`*[_type == "settings"][0]{
+  ...,
+  mainNavigation {
     ...,
-      mainNavigation {
-        ...,
-      "darkLogo": darkLogo.asset->,
-      "lightLogo": lightLogo.asset->,
-      navLinks[]{
-        ...,
-        page->}
+    "darkLogo": darkLogo.asset->,
+    "lightLogo": lightLogo.asset->,
+    navLinks[]{
+      ...,
+      page->
+    }
+  },
+  footer {
+    secondColumnFooter {
+      address,
+      email,
+      phoneNumber
     },
-  }`);
+    thirdColumnFooter {
+      instagram
+    },
+    fourthColumnFooter[] {
+      ...,
+      page->
+    },
+    fifthColumnFooter {
+      ...,
+      page->
+    }
+  }
+}`);
+
 
 const linkFields = `
   link {

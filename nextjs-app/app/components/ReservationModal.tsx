@@ -55,7 +55,6 @@ export default function ReservationModal({
             />
           </svg>
         </button>
-
         <div className="flex-grow flex justify-center items-center 2xl:mt-32 md:mt-12 lg:mt-0">
           <iframe
             src={url}

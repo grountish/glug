@@ -67,42 +67,63 @@ export const settings = defineType({
     defineField({
       name: 'footer',
       title: 'Footer',
-      type: 'image',
-      description: 'Añade el logo de la empresa en formato SVG y la información del footer.',
+      type: 'object',
+      description: 'Información del footer del sitio.',
       fields: [
         defineField({
           name: 'secondColumnFooter',
           title: 'Segunda Columna Footer',
-          type: 'blockContent',
-          description: 'Añade la información de la segunda columna del footer.',
-          validation: (Rule) => Rule.required(),
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'address',
+              title: 'Dirección',
+              type: 'link',
+            }),
+            defineField({
+              name: 'email',
+              title: 'Email',
+              type: 'string',
+            }),
+            defineField({
+              name: 'phoneNumber',
+              title: 'Teléfono',
+              type: 'string',
+            }),
+          ],
         }),
         defineField({
           name: 'thirdColumnFooter',
-          title: 'Tercera Columna Footer',
-          type: 'blockContent',
-          description: 'Añade la información de la tercera columna del footer.',
-          validation: (Rule) => Rule.required(),
+          title: 'Tercera Columna Footer (Social)',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'instagram',
+              title: 'Instagram',
+              type: 'link',
+            }),
+          ],
         }),
         defineField({
           name: 'fourthColumnFooter',
-          title: 'Cuarta Columna Footer',
-          type: 'blockContent',
-          description: 'Añade la información de la cuarta columna del footer.',
-          validation: (Rule) => Rule.required(),
+          title: 'Cuarta Columna Footer (Links a páginas)',
+          type: 'array',
+          of: [
+            defineField({
+              name: 'pageLink',
+              title: 'Link a página',
+              type: 'link',
+            }),
+          ],
         }),
         defineField({
-          name: 'workWithUs',
-          title: 'Trabaja con nosotros',
-          type: 'string',
-        }),
-        defineField({
-          name: 'email',
-          title: 'Email',
-          type: 'string',
+          name: 'fifthColumnFooter',
+          title: 'Quinta columna footer',
+          type: 'link',
         }),
       ],
     }),
+    
     defineField({
       name: 'description',
       description: 'Used both for the <meta> description tag for SEO, and the site subheader.',

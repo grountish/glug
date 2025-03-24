@@ -437,20 +437,18 @@ export type Settings = {
     } & Link>;
   };
   footer?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    secondColumnFooter?: {
+      address?: Link;
+      email?: string;
+      phoneNumber?: string;
     };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    secondColumnFooter: BlockContent;
-    thirdColumnFooter: BlockContent;
-    fourthColumnFooter: BlockContent;
-    workWithUs?: string;
-    email?: string;
-    _type: "image";
+    thirdColumnFooter?: {
+      instagram?: Link;
+    };
+    fourthColumnFooter?: Array<{
+      _key: string;
+    } & Link>;
+    fifthColumnFooter?: Link;
   };
   description?: Array<{
     children?: Array<{
@@ -746,7 +744,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: settingsQuery
-// Query: *[_type == "settings"][0]{    ...,      mainNavigation {        ...,      "darkLogo": darkLogo.asset->,      "lightLogo": lightLogo.asset->,      navLinks[]{        ...,        page->}    },  }
+// Query: *[_type == "settings"][0]{  ...,  mainNavigation {    ...,    "darkLogo": darkLogo.asset->,    "lightLogo": lightLogo.asset->,    navLinks[]{      ...,      page->    }  },  footer {    secondColumnFooter {      address,      email,      phoneNumber    },    thirdColumnFooter {      instagram    },    fourthColumnFooter[] {      ...,      page->    },    fifthColumnFooter {      ...,      page->    }  }}
 export type SettingsQueryResult = {
   _id: string;
   _type: "settings";
@@ -835,22 +833,81 @@ export type SettingsQueryResult = {
       openType?: "modal" | "newTab";
     }>;
   } | null;
-  footer?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    secondColumnFooter: BlockContent;
-    thirdColumnFooter: BlockContent;
-    fourthColumnFooter: BlockContent;
-    workWithUs?: string;
-    email?: string;
-    _type: "image";
-  };
+  footer: {
+    secondColumnFooter: {
+      address: Link | null;
+      email: string | null;
+      phoneNumber: string | null;
+    } | null;
+    thirdColumnFooter: {
+      instagram: Link | null;
+    } | null;
+    fourthColumnFooter: Array<{
+      _key: string;
+      _type: "link";
+      linkType?: "href" | "page";
+      urlTitle?: string;
+      href?: string;
+      page: {
+        _id: string;
+        _type: "page";
+        _createdAt: string;
+        _updatedAt: string;
+        _rev: string;
+        name: string;
+        slug?: Slug;
+        heading: string;
+        subheading?: string;
+        pageBackgroundColor?: Color;
+        pageBuilder?: Array<{
+          _key: string;
+        } & CallToAction | {
+          _key: string;
+        } & FeatureCard | {
+          _key: string;
+        } & ImageTextBlock | {
+          _key: string;
+        } & InfoCard | {
+          _key: string;
+        } & InfoWithCTA | {
+          _key: string;
+        } & MainHero>;
+      } | null;
+      openType?: "modal" | "newTab";
+    }> | null;
+    fifthColumnFooter: {
+      _type: "link";
+      linkType?: "href" | "page";
+      urlTitle?: string;
+      href?: string;
+      page: {
+        _id: string;
+        _type: "page";
+        _createdAt: string;
+        _updatedAt: string;
+        _rev: string;
+        name: string;
+        slug?: Slug;
+        heading: string;
+        subheading?: string;
+        pageBackgroundColor?: Color;
+        pageBuilder?: Array<{
+          _key: string;
+        } & CallToAction | {
+          _key: string;
+        } & FeatureCard | {
+          _key: string;
+        } & ImageTextBlock | {
+          _key: string;
+        } & InfoCard | {
+          _key: string;
+        } & InfoWithCTA | {
+          _key: string;
+        } & MainHero>;
+      } | null;
+      openType?: "modal" | "newTab";
+    } | null;
+  } | null;
   description?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1211,7 +1268,7 @@ export type PagesSlugsResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"settings\"][0]{\n    ...,\n      mainNavigation {\n        ...,\n      \"darkLogo\": darkLogo.asset->,\n      \"lightLogo\": lightLogo.asset->,\n      navLinks[]{\n        ...,\n        page->}\n    },\n  }": SettingsQueryResult;
+    "*[_type == \"settings\"][0]{\n  ...,\n  mainNavigation {\n    ...,\n    \"darkLogo\": darkLogo.asset->,\n    \"lightLogo\": lightLogo.asset->,\n    navLinks[]{\n      ...,\n      page->\n    }\n  },\n  footer {\n    secondColumnFooter {\n      address,\n      email,\n      phoneNumber\n    },\n    thirdColumnFooter {\n      instagram\n    },\n    fourthColumnFooter[] {\n      ...,\n      page->\n    },\n    fifthColumnFooter {\n      ...,\n      page->\n    }\n  }\n}": SettingsQueryResult;
     "\n  *[_type == 'page' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    pageBackgroundColor,\n    \"pageBuilder\": pageBuilder[]{\n      ...,\n      _type == \"callToAction\" => {\n        ...,\n        \n  link {\n      ...,\n      _type == \"link\" => {\n        \"page\": page->slug.current,\n        \"post\": post->slug.current\n      }\n  }\n,\n      },\n      _type == \"mainHero\" => {\n        ...\n      }\n    },\n  }\n": GetPageQueryResult;
     "\n  *[_type == \"page\" && defined(slug.current)]\n  {\"slug\": slug.current}\n": PagesSlugsResult;
   }

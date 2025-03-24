@@ -5266,96 +5266,83 @@
         "value": {
           "type": "object",
           "attributes": {
-            "asset": {
+            "secondColumnFooter": {
               "type": "objectAttribute",
               "value": {
                 "type": "object",
                 "attributes": {
-                  "_ref": {
+                  "address": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "inline",
+                      "name": "link"
+                    },
+                    "optional": true
+                  },
+                  "email": {
                     "type": "objectAttribute",
                     "value": {
                       "type": "string"
-                    }
+                    },
+                    "optional": true
                   },
-                  "_type": {
+                  "phoneNumber": {
                     "type": "objectAttribute",
                     "value": {
-                      "type": "string",
-                      "value": "reference"
-                    }
-                  },
-                  "_weak": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "boolean"
+                      "type": "string"
                     },
                     "optional": true
                   }
-                },
-                "dereferencesTo": "sanity.imageAsset"
+                }
               },
               "optional": true
-            },
-            "hotspot": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "inline",
-                "name": "sanity.imageHotspot"
-              },
-              "optional": true
-            },
-            "crop": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "inline",
-                "name": "sanity.imageCrop"
-              },
-              "optional": true
-            },
-            "secondColumnFooter": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "inline",
-                "name": "blockContent"
-              },
-              "optional": false
             },
             "thirdColumnFooter": {
               "type": "objectAttribute",
               "value": {
-                "type": "inline",
-                "name": "blockContent"
+                "type": "object",
+                "attributes": {
+                  "instagram": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "inline",
+                      "name": "link"
+                    },
+                    "optional": true
+                  }
+                }
               },
-              "optional": false
+              "optional": true
             },
             "fourthColumnFooter": {
               "type": "objectAttribute",
               "value": {
+                "type": "array",
+                "of": {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "link"
+                  }
+                }
+              },
+              "optional": true
+            },
+            "fifthColumnFooter": {
+              "type": "objectAttribute",
+              "value": {
                 "type": "inline",
-                "name": "blockContent"
-              },
-              "optional": false
-            },
-            "workWithUs": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "string"
+                "name": "link"
               },
               "optional": true
-            },
-            "email": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "string"
-              },
-              "optional": true
-            },
-            "_type": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "string",
-                "value": "image"
-              }
             }
           }
         },
