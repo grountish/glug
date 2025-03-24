@@ -102,8 +102,33 @@ export default function MobileMenu({
         })}
       </nav>
 
-      <div className="text-right text-[#541B1E] pb-12">
-        <PortableText value={block.footer?.secondColumnFooter as any} />
+      <div className="text-right text-[#541B1E] pb-12 flex flex-col space-y-2 text-base max-w-44 ml-auto">
+        {block?.footer?.secondColumnFooter?.address?.href && (
+          <a
+            href={block.footer.secondColumnFooter.address.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            {block.footer.secondColumnFooter.address.urlTitle}
+          </a>
+        )}
+        {block?.footer?.secondColumnFooter?.email && (
+          <a
+            href={`mailto:${block.footer.secondColumnFooter.email}`}
+            className="hover:underline"
+          >
+            {block.footer.secondColumnFooter.email}
+          </a>
+        )}
+        {block?.footer?.secondColumnFooter?.phoneNumber && (
+          <a
+            href={`tel:${block.footer.secondColumnFooter.phoneNumber}`}
+            className="hover:underline"
+          >
+            {block.footer.secondColumnFooter.phoneNumber}
+          </a>
+        )}
       </div>
     </div>
   );
