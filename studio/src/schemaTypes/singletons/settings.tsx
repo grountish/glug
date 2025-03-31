@@ -119,7 +119,7 @@ export const settings = defineType({
         defineField({
           name: 'fifthColumnFooter',
           title: 'Quinta columna footer',
-          type: 'link',
+          type: 'string',
         }),
       ],
     }),

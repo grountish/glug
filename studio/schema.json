@@ -5339,8 +5339,7 @@
             "fifthColumnFooter": {
               "type": "objectAttribute",
               "value": {
-                "type": "inline",
-                "name": "link"
+                "type": "string"
               },
               "optional": true
             }

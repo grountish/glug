@@ -448,7 +448,7 @@ export type Settings = {
     fourthColumnFooter?: Array<{
       _key: string;
     } & Link>;
-    fifthColumnFooter?: Link;
+    fifthColumnFooter?: string;
   };
   description?: Array<{
     children?: Array<{
@@ -875,38 +875,7 @@ export type SettingsQueryResult = {
       } | null;
       openType?: "modal" | "newTab";
     }> | null;
-    fifthColumnFooter: {
-      _type: "link";
-      linkType?: "href" | "page";
-      urlTitle?: string;
-      href?: string;
-      page: {
-        _id: string;
-        _type: "page";
-        _createdAt: string;
-        _updatedAt: string;
-        _rev: string;
-        name: string;
-        slug?: Slug;
-        heading: string;
-        subheading?: string;
-        pageBackgroundColor?: Color;
-        pageBuilder?: Array<{
-          _key: string;
-        } & CallToAction | {
-          _key: string;
-        } & FeatureCard | {
-          _key: string;
-        } & ImageTextBlock | {
-          _key: string;
-        } & InfoCard | {
-          _key: string;
-        } & InfoWithCTA | {
-          _key: string;
-        } & MainHero>;
-      } | null;
-      openType?: "modal" | "newTab";
-    } | null;
+    fifthColumnFooter: null;
   } | null;
   description?: Array<{
     children?: Array<{

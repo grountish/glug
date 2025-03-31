@@ -32,30 +32,51 @@ export default function Header({ block }: HeaderProps) {
       <header className="lg:hidden flex justify-between w-full fixed top-8 left-0 px-8 items-center z-50">
         <DynamicHeader />
         <button onClick={toggleMenu} aria-label="Toggle menu">
-          <MenuIcon width={40} height={22} color="#712538" isOpen={isMenuOpen} />
+          <MenuIcon
+            width={40}
+            height={22}
+            color="#712538"
+            isOpen={isMenuOpen}
+          />
         </button>
       </header>
 
       {isMenuOpen && (
-        <MobileMenu block={block} onClose={toggleMenu} onOpenModal={handleOpenModal} />
+        <MobileMenu
+          block={block}
+          onClose={toggleMenu}
+          onOpenModal={handleOpenModal}
+        />
       )}
 
       <header className="fixed top-0 left-0 lg:flex hidden items-center text-[14px] justify-between px-20 py-8 bg-transparent z-50 w-full font-teachers transition-colors duration-300">
         <DynamicHeader />
         <div className="flex w-1/2">
-          <div className="text-left pl-12 pr-24 leading-tight">
-            <PortableText
-              value={
-                block?.mainNavigation?.secondColumnNav as PortableTextBlock[]
-              }
-            />
+          <div
+            className="text-left pl-12 leading-tight w-[200px] pl-12"
+          >
+            <a
+              href={block?.footer?.secondColumnFooter?.address?.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-left h-full"
+            >
+              {block?.footer?.secondColumnFooter?.address?.urlTitle}
+            </a>
           </div>
-          <div className="text-left leading-tight">
-            <PortableText
-              value={
-                block?.mainNavigation?.thirdColumnNav as PortableTextBlock[]
-              }
-            />
+          <div className="text-left leading-tight flex flex-col pl-12">
+            <a
+              href={`mailto:${block?.footer?.secondColumnFooter?.email}`}
+              className="cursor-pointer"
+            >
+              {block?.footer?.secondColumnFooter?.email}
+            </a>
+            <a
+              href={`tel:${block?.footer?.secondColumnFooter?.phoneNumber}`}
+              className="cursor-pointer"
+            >
+              {block?.footer?.secondColumnFooter?.phoneNumber}
+            </a>
           </div>
         </div>
 
@@ -114,7 +135,6 @@ export default function Header({ block }: HeaderProps) {
           })}
         </nav>
       </header>
-
 
       {isModalOpen && modalUrl && (
         <ReservationModal
