@@ -20,7 +20,6 @@ export default function Footer({ block }: FooterProps) {
   if (!block) return null;
   const footer = block.footer;
 
-  console.log(footer);
   return (
     <footer className="text-[#ECE8E2] flex flex-col lg:grid grid-cols-5 gap-4 [align-items:flex-start] text-[14px] justify-start pb-40 pt-20 lg:px-20 px-8 bg-[#712538] z-50 w-full font-teachers border-t border-[#ECE8E2]">
       <Link href="/">
