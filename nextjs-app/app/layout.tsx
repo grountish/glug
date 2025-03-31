@@ -9,7 +9,7 @@ import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { settingsQuery } from "@/sanity/lib/queries";
-import { resolveOpenGraphImage } from "@/sanity/lib/utils";
+import { urlForImage } from "@/sanity/lib/utils"; // ✅ Use this instead of resolveOpenGraphImage
 import { handleError } from "./client-utils";
 import GlobalAnimations from "./components/GlobalAnimations";
 
@@ -20,30 +20,35 @@ import GlobalAnimations from "./components/GlobalAnimations";
 export async function generateMetadata(): Promise<Metadata> {
   const { data: settings } = await sanityFetch({
     query: settingsQuery,
-    // Metadata should never contain stega
     stega: false,
   });
-  const title = settings?.title || "Glug";
-  const description = settings?.description;
 
-  const ogImage = resolveOpenGraphImage(settings?.ogImage);
-  let metadataBase: URL | undefined = undefined;
-  try {
-    metadataBase = settings?.ogImage?.metadataBase
-      ? new URL(settings.ogImage.metadataBase)
-      : undefined;
-  } catch {
-    // ignore
-  }
+  const title = settings?.title || "Glug";
+  const description = toPlainText(settings?.description || []);
+
+  const ogImageUrl = settings?.ogImage
+      ? urlForImage(settings?.ogImage)?.width(1200)?.height(630)?.url()
+      : null;
+
   return {
-    metadataBase,
     title: {
       template: `%s | ${title}`,
       default: title,
     },
-    description: toPlainText(description || []),
+    description,
     openGraph: {
-      images: ogImage ? [ogImage] : [],
+      title,
+      description,
+      images: ogImageUrl
+        ? [
+            {
+              url: ogImageUrl,
+              width: 1200,
+              height: 630,
+              alt: "Open Graph Image",
+            },
+          ]
+        : [],
     },
   };
 }
@@ -55,6 +60,7 @@ const inter = Inter({
 });
 
 const teachers = Teachers({ subsets: ["latin"], weight: ["400", "600"] });
+
 export default async function RootLayout({
   children,
 }: {
