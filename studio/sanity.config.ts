@@ -9,6 +9,7 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './src/schemaTypes'
 import {structure} from './src/structure'
 import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import {
   presentationTool,
   defineDocuments,
@@ -106,6 +107,7 @@ export default defineConfig({
     structureTool({
       structure, // Custom studio structure configuration, imported from ./src/structure.ts
     }),
+    vercelDeployTool(),
     // Additional plugins for enhanced functionality
     unsplashImageAsset(),
     assist(),

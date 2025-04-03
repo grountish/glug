@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "@sanity/assist": "^3.0.8",
+    "@sanity/dashboard": "^4.1.3",
     "@sanity/icons": "^3.5.0",
     "@sanity/vision": "^3.65.1",
     "date-fns": "^3.6.0",
@@ -26,6 +27,7 @@
     "rxjs": "^7.8.1",
     "sanity": "^3.65.1",
     "sanity-plugin-asset-source-unsplash": "^3.0.1",
+    "sanity-plugin-vercel-deploy": "^3.3.4",
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
